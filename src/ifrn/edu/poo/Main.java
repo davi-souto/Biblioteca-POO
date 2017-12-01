@@ -57,7 +57,7 @@ public class Main {
 				
 				break;
 			case 4: 
-				System.out.println(listaDeUsuarios.quatidadeAlunos());
+				System.out.println("Número de usuários cadastrados: "+listaDeUsuarios.quatidadeAlunos());
 				
 				break;
 			}
