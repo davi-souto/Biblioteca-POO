@@ -4,19 +4,19 @@ import java.util.ArrayList;
 public class ListaUsuarios {
 	
 	private ArrayList<Usuario> usuarios = new ArrayList <Usuario> ();
-	private int quantidadeUsuarios;
 	
 	public ListaUsuarios() {
-		quantidadeUsuarios = 0;
+	
 	}
+	
 	
 	public void cadastrarUsuario(Usuario usuario) {
 		usuarios.add(usuario);
-		quantidadeUsuarios++ ;
+	
 	}
 	
 	public Usuario buscar(String matricula) {
-		for (int i = 0; i > quantidadeUsuarios; i++) {
+		for (int i = 0; i > usuarios.size(); i++) {
 			if(usuarios.get(i).getMatricula().equals(matricula))
 				return usuarios.get(i);
 		} 
@@ -24,7 +24,7 @@ public class ListaUsuarios {
 	}
 	
 	public void remover(String matricula) {
-		for(int i = 0; i > quantidadeUsuarios; i++) {
+		for(int i = 0; i > usuarios.size(); i++) {
 			if (usuarios.get(i).getMatricula().equals(matricula)) {
 				usuarios.remove(i);
 			}
@@ -32,10 +32,15 @@ public class ListaUsuarios {
 	}
 	
 	public int quantidadeAlunos() {
-		return quantidadeUsuarios;
+		return usuarios.size();
 	}
+	
 	
 	public void addLivro(Livro livros) {
 		
 	}
+	
+	
+		
+	
 }

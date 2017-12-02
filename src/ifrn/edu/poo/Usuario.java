@@ -4,13 +4,11 @@ public class Usuario {
 	private String nome;
 	private String matricula;
 	private String senha;
-	private boolean administrador;
 	
-	public Usuario(String nome, String matricula, String senha, boolean administrador){
+	public Usuario(String nome, String matricula, String senha){
 		this.nome = nome;
 		this.matricula = matricula;
 		this.senha = senha;
-		this.administrador = administrador;
 	}
 	
 	public void setSenha(String senha) {
