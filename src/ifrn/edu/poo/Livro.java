@@ -5,6 +5,12 @@ public class Livro {
 	private String codigoLivro;
 	private String curso;
 	
+	public Livro(String nomeLivro, String codigoLivro, String curso) {
+		this.nomeLivro = nomeLivro;
+		this.codigoLivro = codigoLivro;
+		this.curso = curso;
+	}
+
 	public String getNomeLivro() {
 		return nomeLivro;
 	}

@@ -31,7 +31,7 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public int quatidadeAlunos() {
+	public int quantidadeAlunos() {
 		return quantidadeUsuarios;
 	}
 	
