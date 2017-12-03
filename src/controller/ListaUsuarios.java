@@ -2,7 +2,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import ifrn.edu.poo.Livro;
+import model.Livro;
 import model.Usuario;
 import view.Textos;
 

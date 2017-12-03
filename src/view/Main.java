@@ -1,9 +1,9 @@
 package view;
 import java.util.Scanner;
 
+import controller.ListaLivros;
 import controller.ListaUsuarios;
-import ifrn.edu.poo.ListaLivros;
-import ifrn.edu.poo.Livro;
+import model.Livro;
 
 public class Main {
 
@@ -34,14 +34,10 @@ public class Main {
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
 							case 1:
-								System.out.println("Digite o nome do livro");
-								String nomeDoLivro = ler.next();
-								listaDeLivros.buscarNome(nomeDoLivro);
+								listaDeLivros.buscarNome();
 								break;
 							case 2:
-								System.out.println("Digite o curso do livro");
-								String cursoDoLivro = ler.next();
-								listaDeLivros.buscarCurso(cursoDoLivro);
+								listaDeLivros.buscarCurso();
 								break;
 						}
 							
@@ -68,28 +64,7 @@ public class Main {
 							listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:
-							System.out.println("Digite o nome do livro: ");
-							String nomeLivro = ler.next();
-							
-							System.out.println("Digite o código do livro: ");
-							String codigoLivro = ler.next();
-							
-							System.out.println("Digite o curso ao qual pertence o livro: ");
-							String curso = ler.next();
-							
-							Livro l = new Livro(nomeLivro, codigoLivro, curso);
-							
-							System.out.println("O nome do livro é: " + l.getNomeLivro());
-							System.out.println("O código do livro é: " + l.getCodigoLivro());
-							System.out.println("O livro pertence ao curso: " + l.getCurso());
-							texto.confirmarCadastro();
-							int confirma = ler.nextInt();
-							switch(confirma) {
-								case 1:
-									listaDeLivros.cadastrarLivro(l);
-									System.out.println("Livro cadastrado!");
-									break;
-							}
+							listaDeLivros.cadastrarLivro();
 							break;
 						case 4:
 							listaDeUsuarios.removerUsuario();

@@ -43,5 +43,14 @@ public class Textos {
 		
 	}
 	
+	public static void emprestimoLivro() {
+		System.out.println("Pegar livro emprestado?");
+		System.out.println("-------------------------------------");
+		System.out.println("1 - Sim");
+		System.out.println("2 - Não");
+		System.out.println("-------------------------------------");
+		
+		
+	}
 
 }

@@ -1,4 +1,4 @@
-package ifrn.edu.poo;
+package model;
 
 public class Cursos {
 	private String curso;
