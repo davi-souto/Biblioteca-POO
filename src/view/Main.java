@@ -1,5 +1,9 @@
-package ifrn.edu.poo;
+package view;
 import java.util.Scanner;
+
+import controller.ListaUsuarios;
+import ifrn.edu.poo.ListaLivros;
+import ifrn.edu.poo.Livro;
 
 public class Main {
 
@@ -15,10 +19,6 @@ public class Main {
 			opcaoUsuario = ler.nextInt();
 			
 			switch(opcaoUsuario) {
-			case 0:
-				System.out.println("Saindo do aplicativo.");
-				break;
-				
 			case 1:
 				texto.menuAluno();
 				int menuA = ler.nextInt();
@@ -27,29 +27,7 @@ public class Main {
 					
 						break;
 					case 2:
-						
-						System.out.println("Digite a matrícula: ");
-						String matricula = ler.next();
-						
-						System.out.println("Digite seu nome: ");
-						String nome = ler.next();
-						
-						System.out.println("Digite a senha: ");
-						String senha = ler.next();
-			
-						Usuario u = new Usuario(nome, matricula, senha);
-						
-						System.out.println("Sua matrícula é: " + u.getMatricula());
-						System.out.println("Seu nome é: " + u.getNome());
-						System.out.println("Sua senha é: " + u.getSenha());
-						texto.confirmarCadastro();
-						int confirma = ler.nextInt();
-						switch(confirma) {
-						case 1:
-							listaDeUsuarios.cadastrarUsuario(u);
-							System.out.println("Usuário cadastrado!");
-							break;
-						}
+						listaDeUsuarios.cadastrarUsuario();
 						break;
 					case 3:
 						texto.buscadeLivros();
@@ -83,12 +61,11 @@ public class Main {
 					int menuB = ler.nextInt();
 					switch(menuB) {
 						case 1:
-							System.out.println("Digite a matrícula do usuario");
-							String buscaMatricula = ler.next();
-							listaDeUsuarios.buscar(buscaMatricula);
+							listaDeUsuarios.buscarUsuario();
 							break;
 						case 2:
 							System.out.println("Número de usuários cadastrados: "+ listaDeUsuarios.quantidadeAlunos());
+							listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:
 							System.out.println("Digite o nome do livro: ");
@@ -115,16 +92,7 @@ public class Main {
 							}
 							break;
 						case 4:
-							System.out.println("Digite a matrícula do usuário: ");
-							String matriculaExcluida = ler.next();
-							System.out.println("Digite a senha de administrador para conirmar essa ação:");
-							senhaAdm = ler.nextInt();
-							if(senhaAdm == 0001) {
-								listaDeUsuarios.remover(matriculaExcluida);
-								System.out.println("Usuário removido!");
-							}else {
-								System.out.println("Ação negada!");
-							}
+							listaDeUsuarios.removerUsuario();
 							break;
 					}
 				}else {

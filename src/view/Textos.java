@@ -1,4 +1,4 @@
-package ifrn.edu.poo;
+package view;
 
 public class Textos {
 	

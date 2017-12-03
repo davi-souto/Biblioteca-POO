@@ -1,15 +1,10 @@
-package ifrn.edu.poo;
+package model;
 
 public class Usuario {
 	private String nome;
 	private String matricula;
 	private String senha;
 	
-	public Usuario(String nome, String matricula, String senha){
-		this.nome = nome;
-		this.matricula = matricula;
-		this.senha = senha;
-	}
 	
 	public void setSenha(String senha) {
 		this.senha = senha;
