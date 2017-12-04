@@ -69,17 +69,14 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public int quantidadeUsuarios() {
-		return usuarios.size();
-	}
-	
 	public void mostrarUsuarios() {
+		System.out.println("Número de usuários cadastrados: " + usuarios.size());
 		for (int i = 0; i < usuarios.size(); i++) {
 			System.out.println("Usuario: " + usuarios.get(i).getNome());
 		}
 	}
 	
-	public void addLivro() {
+	public void adicionarLivroUsuario() {
 		
 	}
 	
