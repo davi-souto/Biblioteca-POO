@@ -5,14 +5,14 @@ package model;
 public class Usuario {
 	private String nome;
 	private String matricula;
-	private String senha;
+	private int senha;
 	
 	
-	public void setSenha(String senha) {
+	public void setSenha(int senha) {
 		this.senha = senha;
 	}
 	
-	public String getSenha() {
+	public int getSenha() {
 		return senha;
 	}
 	

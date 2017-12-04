@@ -23,7 +23,7 @@ public class ListaUsuarios {
 		u.setNome(ler.nextLine());
 		
 		System.out.println("Digite sua senha: ");
-		u.setSenha(ler.nextLine());
+		u.setSenha(ler.nextInt());
 		
 		System.out.println("Matricula: " + u.getMatricula());
 		System.out.println("Nome: " + u.getNome());

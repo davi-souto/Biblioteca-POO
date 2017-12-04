@@ -39,6 +39,7 @@ public class Main {
 								break;
 							case 2:
 								listaDeLivros.buscarCurso();
+								listaDeLivros.emprestimo();
 								break;
 						}
 							
