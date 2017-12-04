@@ -8,7 +8,7 @@ import view.Textos;
 
 public class ListaLivros {
 	
-	private ArrayList<Livro> livros = new ArrayList <Livro> ();
+	public ArrayList<Livro> livros = new ArrayList <Livro> ();
 	private int quantidadeLivros;
 	Textos texto = new Textos();
 	Usuario usuarios = new Usuario();
@@ -45,41 +45,52 @@ public class ListaLivros {
 		}
 	}
 	
-	public Livro buscarCurso() {
+	public void buscarCurso() {
 		Scanner ler = new Scanner(System.in);
 		
 		System.out.println("Digite o curso do livro");
 		String cursoDoLivro = ler.next();
 		
-		for(int i = 0; i < quantidadeLivros; i++) {
+		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(cursoDoLivro))
-				for(int e = 0; e < livros.size(); e++) {
-					System.out.println("Livros: "+livros.get(e).getNomeLivro());
-					
-					texto.emprestimoLivro();
-					int opcao = ler.nextInt();
-					switch(opcao) {
-					
-					case 1:
-						System.out.println("Digite o nome do livro desejado:");
-						String livroEmprestado = ler.next();
-						System.out.println("Digite sua senha:");
-						String senha = ler.next();
-						if(senha == usuarios.getSenha()) {
-							for (int d = 0; d < livros.size(); d++) {
-								if(livros.get(d).getNomeLivro().equals(livroEmprestado)) {
-									livros.remove(d);
-									System.out.println("Concluido!");
-								}
-							}
-						}	
+				System.out.println("Livros: "+livros.get(i).getNomeLivro());
+			}
+		}
+	
+	
+	public void emprestimo() {
+		
+		Scanner ler = new Scanner(System.in);
+		
+		
+		texto.emprestimoLivro();
+		int opcao = ler.nextInt();
+		switch(opcao) {
+		
+		case 1:
+			System.out.println("Digite o nome do livro desejado:");
+			String livroEmprestado = ler.next();
+			System.out.println("Digite sua senha:");
+			int senha = ler.nextInt();
+			if(senha == 123) {
+				for (int i = 0; i < livros.size(); i++) {
+					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
+						livros.remove(i);
+						quantidadeLivros --;
+						System.out.println("Concluido!");
+					}else {
+						System.out.println("erro");
 					}
 				}
+			} else {
+				System.out.println("erro!!");
+			}
 		}
-		return null;
+		
 	}
 	
-	public Livro buscarNome() {
+	
+	public void buscarNome() {
 		Scanner ler = new Scanner(System.in);
 		
 		System.out.println("Digite o nome do livro");
@@ -88,30 +99,26 @@ public class ListaLivros {
 		for(int i = 0; i < quantidadeLivros; i++) {
 			if(livros.get(i).getNomeLivro().equals(nomeDoLivro))
 				texto.emprestimoLivro();
-				int opcao = ler.nextInt();
-				switch(opcao) {
-				case 1:
-					System.out.println("Digite sua senha:");
-					String senha = ler.nextLine();
-					if (senha == usuarios.getSenha()) {
-						for (i = 0; i < livros.size(); i++) {
-							if (livros.get(i).getNomeLivro().equals(nomeDoLivro)) {
-								livros.remove(i);
-								System.out.println("Concluido!");
-							}
+			int opcao = ler.nextInt();
+			switch(opcao) {
+			
+			case 1:
+				System.out.println("Digite sua senha:");
+				int senha = ler.nextInt();
+				if(senha == 123) {
+					for (int e = 0; e < livros.size(); e++) {
+						if(livros.get(e).getNomeLivro().equals(nomeDoLivro)) {
+							livros.remove(e);
+							quantidadeLivros --;
+							System.out.println("Concluido!");
+						}else {
+							System.out.println("erro");
 						}
 					}
+				} else {
+					System.out.println("erro!!");
 				}
-				return livros.get(i);
+			}
 		}
-		return null;
 	}
-	
-	public void mostrarLivros() {
-		for (int i = 0; i < livros.size(); i++) {
-			System.out.println("Livro: "+livros.get(i).getNomeLivro());
-		}
-	
-	}
-	
 }
