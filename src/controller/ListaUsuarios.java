@@ -69,7 +69,7 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public int quantidadeAlunos() {
+	public int quantidadeUsuarios() {
 		return usuarios.size();
 	}
 	
@@ -79,7 +79,7 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public void addLivro(Livro livros) {
+	public void addLivro() {
 		
 	}
 	

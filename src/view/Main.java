@@ -61,7 +61,7 @@ public class Main {
 							listaDeUsuarios.buscarUsuario();
 							break;
 						case 2:
-							System.out.println("Número de usuários cadastrados: "+ listaDeUsuarios.quantidadeAlunos());
+							System.out.println("Número de usuários cadastrados: "+ listaDeUsuarios.quantidadeUsuarios());
 							listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:
