@@ -14,6 +14,8 @@ public class Main {
 		Textos texto = new Textos();
 		int opcaoUsuario = -1;
 		
+		System.out.println("Seja bem vindo!");
+		
 		while (opcaoUsuario != 0) {
 			texto.tipoUsuario();
 			opcaoUsuario = ler.nextInt();
