@@ -54,7 +54,7 @@ public class ListaLivros {
 		for(int i = 0; i < quantidadeLivros; i++) {
 			if(livros.get(i).getCurso().equals(cursoDoLivro))
 				for(int e = 0; e < livros.size(); e++) {
-					System.out.println("Livros: "+livros.get(e).getNomeLivro());
+					System.out.println("Livros: "+ livros.get(e).getNomeLivro());
 					
 					texto.emprestimoLivro();
 					int opcao = ler.nextInt();
@@ -109,9 +109,12 @@ public class ListaLivros {
 	
 	public void mostrarLivros() {
 		for (int i = 0; i < livros.size(); i++) {
-			System.out.println("Livro: "+livros.get(i).getNomeLivro());
+			System.out.println("Livro: "+ livros.get(i).getNomeLivro());
 		}
 	
 	}
+
 	
+	
+
 }

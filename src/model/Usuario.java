@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class Usuario {
 	private String nome;
 	private String matricula;
@@ -29,5 +31,7 @@ public class Usuario {
 	public String getNome() {
 		return nome;
 	}
+
 	
+
 }
