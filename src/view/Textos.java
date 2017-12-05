@@ -25,6 +25,14 @@ public class Textos {
 		System.out.println("-------------------------------------");
 	}
 	
+	public static void buscaDeUsuario() {
+		System.out.println("-------------------------------------");
+		System.out.println("1 - Buscar por matricula");
+		System.out.println("2 - Buscar por nome");
+		System.out.println("3 - Buscar por curso");
+		System.out.println("-------------------------------------");
+	}
+	
 	public static void menuAdm() {
 		System.out.println("-------------------------------------");
 		System.out.println("1 - Buscar usuario");

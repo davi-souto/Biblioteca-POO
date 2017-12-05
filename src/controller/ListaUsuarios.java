@@ -60,14 +60,38 @@ public class ListaUsuarios {
 	}
 	
 	public void buscarUsuario() {
+		// Errado ainda
 		Scanner ler = new Scanner(System.in);
-		System.out.println("Digite a matrícula do usuário: ");
-		String matricula = ler.nextLine(); 
+		t.buscaDeUsuario();
 		
-		for (int i = 0; i < usuarios.size(); i++) {
-			if(usuarios.get(i).getMatricula().equals(matricula))
-				System.out.println("Acesso a: " + usuarios.get(i));
-		} 	
+		int comando = ler.nextInt();
+		switch(comando) {
+		case 1:
+			System.out.println("Digite a matrícula do usuário: ");
+			String matricula = ler.next(); 
+			for (int i = 0; i < usuarios.size(); i++) {
+				if(usuarios.get(i).getMatricula().equals(matricula))
+					System.out.println("Acesso a: " + usuarios.get(i).getNome());
+					System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
+					System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
+					System.out.println("Livros em posse: ");
+			} 
+			break;
+		case 2:
+			System.out.println("Digite a matrícula do usuário: ");
+			String nome = ler.next(); 
+			for (int i = 0; i < usuarios.size(); i++) {
+				if(usuarios.get(i).getNome().equals(nome))
+					System.out.println("Acesso a: " + usuarios.get(i).getNome());
+					System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
+					System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
+					System.out.println("Livros em posse: ");
+			} 
+			break;
+		case 3:
+			
+			break;
+		}
 	}
 	
 	public void removerUsuario() {
