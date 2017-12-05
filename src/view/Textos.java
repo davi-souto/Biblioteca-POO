@@ -39,8 +39,6 @@ public class Textos {
 		System.out.println("1 - Confirmar cadastro?");
 		System.out.println("2 - Cancelar cadastro?");
 		System.out.println("-------------------------------------");
-		
-		
 	}
 	
 	public static void emprestimoLivro() {
@@ -48,9 +46,12 @@ public class Textos {
 		System.out.println("-------------------------------------");
 		System.out.println("1 - Sim");
 		System.out.println("2 - Não");
-		System.out.println("-------------------------------------");
-		
-		
+		System.out.println("-------------------------------------");	
 	}
 
+	public static void menuAcessarConta(){
+		System.out.println("-------------------------------------");
+		System.out.println("");
+		System.out.println("-------------------------------------");
+	}
 }

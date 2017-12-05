@@ -64,6 +64,7 @@ public class ListaLivros {
 		
 		Scanner ler = new Scanner(System.in);
 		
+		// ListaUsuarios listaUsuarios = new ListaUsuarios();
 		
 		texto.emprestimoLivro();
 		int opcao = ler.nextInt();
@@ -73,8 +74,9 @@ public class ListaLivros {
 			System.out.println("Digite o nome do livro desejado:");
 			String livroEmprestado = ler.next();
 			System.out.println("Digite sua senha:");
-			int senha = ler.nextInt();
-			if(senha == 123) {
+			String senha = ler.next();
+			// Aqui que vamos tentar ter acesso ao ArrayList de usuarios...
+			if(senha.equals("123")) {
 				for (int i = 0; i < livros.size(); i++) {
 					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
 						livros.remove(i);

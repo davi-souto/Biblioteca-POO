@@ -25,7 +25,7 @@ public class Main {
 				int menuA = ler.nextInt();
 				switch(menuA) {
 					case 1: 
-					
+						listaDeUsuarios.acessarConta();
 						break;
 					case 2:
 						listaDeUsuarios.cadastrarUsuario();
