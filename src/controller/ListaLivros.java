@@ -76,7 +76,7 @@ public class ListaLivros {
 			System.out.println("Digite sua senha:");
 			String senha = ler.next();
 			// Aqui que vamos tentar ter acesso ao ArrayList de usuarios...
-			if(senha.equals("123")) {
+			if(senha.equals(usuarios.getSenha())) {
 				for (int i = 0; i < livros.size(); i++) {
 					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
 						livros.remove(i);
@@ -92,6 +92,16 @@ public class ListaLivros {
 		}
 		
 	}
+	
+	public void devolução() {
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	public void buscarNome() {
