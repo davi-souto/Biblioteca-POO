@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import controller.ListaLivros;
 import controller.ListaUsuarios;
-import model.Livro;
 
 public class Main {
 
