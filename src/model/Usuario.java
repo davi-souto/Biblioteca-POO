@@ -7,16 +7,7 @@ public class Usuario {
 	private String matricula;
 	private String cursoUsuario;
 	private String senha;
-	private String livrosEmprestados;
 	
-	
-	public String getLivrosEmprestados() {
-		return livrosEmprestados;
-	}
-
-	public void setLivrosEmprestados(String livrosEmprestados) {
-		this.livrosEmprestados = livrosEmprestados;
-	}
 	
 	public String getCursoUsuario() {
 		return cursoUsuario;

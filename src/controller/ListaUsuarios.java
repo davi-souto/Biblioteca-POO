@@ -27,7 +27,6 @@ public class ListaUsuarios {
 				System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
 				System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
 				System.out.println("Curso: " + " " + usuarios.get(i).getCursoUsuario());
-				System.out.println("Livros em posse: "+ usuarios.get(i).getLivrosEmprestados());
 				System.out.println("-------------------------------------");
 			}
 		}
@@ -81,7 +80,6 @@ public class ListaUsuarios {
 					System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
 					System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
 					System.out.println("Curso: " + " " + usuarios.get(i).getCursoUsuario());
-					System.out.println("Livros em posse: " + usuarios.get(i).getLivrosEmprestados());
 					System.out.println("-------------------------------------");
 				}
 			} 
@@ -96,7 +94,6 @@ public class ListaUsuarios {
 					System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
 					System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
 					System.out.println("Curso: " + " " + usuarios.get(i).getCursoUsuario());
-					System.out.println("Livros em posse: " + usuarios.get(i).getLivrosEmprestados());
 					System.out.println("-------------------------------------");
 				}
 			} 
@@ -111,7 +108,6 @@ public class ListaUsuarios {
 					System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
 					System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
 					System.out.println("Curso: " + " " + usuarios.get(i).getCursoUsuario());
-					System.out.println("Livros em posse: " + usuarios.get(i).getLivrosEmprestados());
 					System.out.println("-------------------------------------");
 				}
 			} 

@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 import model.Livro;
 import model.Usuario;
+import model.Reserva;
 import view.Textos;
 
 public class ListaLivros {
 	
 	public ArrayList<Livro> livros = new ArrayList <Livro> ();
+	public ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	private int quantidadeLivros;
 	Textos texto = new Textos();
 	Usuario usuarios = new Usuario();
@@ -61,7 +63,7 @@ public class ListaLivros {
 	
 	
 	public void emprestimo() {
-		
+	
 		Scanner ler = new Scanner(System.in);
 		
 		// ListaUsuarios listaUsuarios = new ListaUsuarios();
@@ -72,15 +74,27 @@ public class ListaLivros {
 		
 		case 1:
 			System.out.println("Digite o nome do livro desejado:");
-			String livroEmprestado = ler.next();
+			String livroEmprestado = ler.nextLine();
 			System.out.println("Digite sua senha:");
 			String senha = ler.next();
-			// Aqui que vamos tentar ter acesso ao ArrayList de usuarios...
+			
+			
+			// Ainda em andamento, com erro
 			if(senha.equals(usuarios.getSenha())) {
 				for (int i = 0; i < livros.size(); i++) {
 					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
+						String nomeLivro = livros.get(i).getNomeLivro();
+						String codigoLivro = livros.get(i).getCodigoLivro();
+						String curso = livros.get(i).getCurso();
+						Livro l = new Livro(nomeLivro, codigoLivro, curso);
+						
 						livros.remove(i);
 						quantidadeLivros --;
+						reservas.add(l);
+						
+						
+						
+						
 						System.out.println("Concluido!");
 					}else {
 						System.out.println("erro");
