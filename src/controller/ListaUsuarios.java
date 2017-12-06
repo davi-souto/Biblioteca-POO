@@ -1,9 +1,12 @@
 package controller;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Livro;
 import model.Usuario;
+import model.Reserva;
+import controller.ListaLivros;
 import view.Textos;
 
 
@@ -11,6 +14,9 @@ public class ListaUsuarios {
 	
 	private ArrayList<Usuario> usuarios = new ArrayList <Usuario> ();
 	Textos t = new Textos();
+	Reserva r = new Reserva();
+	
+	
 	
 	public void acessarConta() {
 		Scanner ler = new Scanner(System.in); 
@@ -27,6 +33,7 @@ public class ListaUsuarios {
 				System.out.println("Matricula: " + " " + usuarios.get(i).getMatricula());
 				System.out.println("Usuario: " + " " + usuarios.get(i).getNome());
 				System.out.println("Curso: " + " " + usuarios.get(i).getCursoUsuario());
+				//System.out.println("Livros em posse: " + r.getNomeLivro());
 				System.out.println("-------------------------------------");
 			}
 		}

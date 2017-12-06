@@ -5,12 +5,6 @@ public class Reserva {
 	private String codigoLivro;
 	private String curso;
 	
-	public Reserva(String nomeLivro, String codigoLivro, String curso) {
-		this.nomeLivro = nomeLivro;
-		this.codigoLivro = codigoLivro;
-		this.curso = curso;
-	}
-	
 	public String getNomeLivro() {
 		return nomeLivro;
 	}

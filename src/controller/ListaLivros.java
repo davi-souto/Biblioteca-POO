@@ -12,6 +12,7 @@ public class ListaLivros {
 	public ArrayList<Livro> livros = new ArrayList <Livro> ();
 	public ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	private int quantidadeLivros;
+	private int quantidadeReserva;
 	Textos texto = new Textos();
 	Usuario usuarios = new Usuario();
 	
@@ -57,7 +58,9 @@ public class ListaLivros {
 			if(livros.get(i).getCurso().equals(cursoDoLivro)) {
 				System.out.println("Livros: "+ livros.get(i).getNomeLivro());
 		
-			}	
+			}else {
+				System.out.println("Livros não encontrados");
+			}
 		}	
 	}			
 	
@@ -74,27 +77,20 @@ public class ListaLivros {
 		
 		case 1:
 			System.out.println("Digite o nome do livro desejado:");
-			String livroEmprestado = ler.nextLine();
+			String livroEmprestado = ler.next();
 			System.out.println("Digite sua senha:");
 			String senha = ler.next();
-			
-			
-			// Ainda em andamento, com erro
-			if(senha.equals(usuarios.getSenha())) {
+			if(senha.equals("123")) {
 				for (int i = 0; i < livros.size(); i++) {
 					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
-						String nomeLivro = livros.get(i).getNomeLivro();
-						String codigoLivro = livros.get(i).getCodigoLivro();
-						String curso = livros.get(i).getCurso();
-						Livro l = new Livro(nomeLivro, codigoLivro, curso);
-						
+						Reserva e = new Reserva();
+						e.setNomeLivro(livros.get(i).getNomeLivro());
+						e.setCodigoLivro(livros.get(i).getCodigoLivro());
+						e.setCurso(livros.get(i).getCurso());
+						reservas.add(e);
+						quantidadeReserva ++;
 						livros.remove(i);
 						quantidadeLivros --;
-						reservas.add(l);
-						
-						
-						
-						
 						System.out.println("Concluido!");
 					}else {
 						System.out.println("erro");
@@ -117,7 +113,7 @@ public class ListaLivros {
 		String nomeDoLivro = ler.next();
 		
 		for(int i = 0; i < quantidadeLivros; i++) {
-			if(livros.get(i).getNomeLivro().equals(nomeDoLivro))
+			if(livros.get(i).getNomeLivro().equals(nomeDoLivro)) {
 				texto.emprestimoLivro();
 			int opcao = ler.nextInt();
 			switch(opcao) {
@@ -138,6 +134,9 @@ public class ListaLivros {
 				} else {
 					System.out.println("erro!!");
 				}
+			}
+		}else {
+			System.out.println("Livros não encontrados");
 			}
 		}
 	}
