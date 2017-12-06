@@ -94,15 +94,7 @@ public class ListaLivros {
 	}
 	
 	public void devolução() {
-		
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public void buscarNome() {
 		Scanner ler = new Scanner(System.in);

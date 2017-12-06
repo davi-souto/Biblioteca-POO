@@ -5,6 +5,7 @@ package model;
 public class Usuario {
 	private String nome;
 	private String matricula;
+	private String cursoUsuario;
 	private String senha;
 	private String livrosEmprestados;
 	
@@ -15,6 +16,14 @@ public class Usuario {
 
 	public void setLivrosEmprestados(String livrosEmprestados) {
 		this.livrosEmprestados = livrosEmprestados;
+	}
+	
+	public String getCursoUsuario() {
+		return cursoUsuario;
+	}
+
+	public void setCursoUsuario(String cursoUsuario) {
+		this.cursoUsuario = cursoUsuario;
 	}
 
 	public void setSenha(String senha) {
