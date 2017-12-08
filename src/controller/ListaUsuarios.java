@@ -4,29 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Usuario;
-import model.Reserva;
-import controller.ListaLivros;
 import exceptions.SenhaAdminIncorretaException;
-import view.Textos;
+
 
 
 public class ListaUsuarios {
 	
-	private ArrayList<Usuario> usuarios = new ArrayList <Usuario> ();
-	private ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
-	Textos t = new Textos();
-	Reserva r = new Reserva();
-	
-	
-	
+
 	public void acessarConta() {
-		Scanner ler = new Scanner(System.in); 
-		
-		System.out.println("Digite sua matricula: ");
-		String matricula = ler.nextLine();
-		System.out.println("Digite sua senha: ");
-		String senha = ler.nextLine();
-		
 		for(int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matricula)) && (usuarios.get(i).getSenha().equals(senha))) {
 				System.out.println("-------------------------------------");
@@ -40,35 +25,8 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public void cadastrarUsuario() {
-		Usuario u = new Usuario();
-		Scanner ler = new Scanner(System.in);
+	public void cadastrarUsuario(String matricula, String nome, String curso, String senha) {
 		
-		System.out.println("Digite sua matricula: ");
-		u.setMatricula(ler.nextLine());
-		
-		System.out.println("Digite seu nome: ");
-		u.setNome(ler.nextLine());
-		
-		System.out.println("Digite seu curso: ");
-		u.setCursoUsuario(ler.nextLine());
-		
-		System.out.println("Digite sua senha: ");
-		u.setSenha(ler.nextLine());
-		
-		System.out.println("Matricula: " + u.getMatricula());
-		System.out.println("Nome: " + u.getNome());
-		System.out.println("Curso: " + u.getCursoUsuario());
-		System.out.println("Senha: " + u.getSenha());
-		
-		t.confirmarCadastro();
-		int confirmar = ler.nextInt();
-		switch(confirmar) {
-		case 1:
-			usuarios.add(u);
-			System.out.println("Usuario " + u.getNome() + " cadastrado!");
-		}
-	
 	}
 	
 	public void buscarUsuario() {

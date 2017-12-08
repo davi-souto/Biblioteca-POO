@@ -25,10 +25,35 @@ public class Main {
 				int menuA = ler.nextInt();
 				switch(menuA) {
 					case 1: 
-						listaDeUsuarios.acessarConta();
+						ler = new Scanner(System.in); 
+						
+						System.out.println("Digite sua matricula: ");
+						String acessarMatricula = ler.nextLine();
+						System.out.println("Digite sua senha: ");
+						String acessarSenha = ler.nextLine();
+						
 						break;
 					case 2:
-						listaDeUsuarios.cadastrarUsuario();
+						ler = new Scanner(System.in);
+						
+						System.out.println("Digite sua matricula: ");
+						String cadastrarMatricula = ler.nextLine();
+						
+						System.out.println("Digite seu nome: ");
+						String cadastrarNome = ler.nextLine();
+						
+						System.out.println("Digite seu curso: ");
+						String cadastrarCurso = ler.nextLine();
+						
+						System.out.println("Digite sua senha: ");
+						String cadastrarSenha = ler.nextLine();
+						
+						texto.confirmarCadastro();
+						int confirmar = ler.nextInt();
+						switch(confirmar) {
+						case 1:
+							
+						}
 						break;
 					case 3:
 						texto.buscadeLivros();

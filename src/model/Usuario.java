@@ -8,6 +8,10 @@ public class Usuario {
 	private String cursoUsuario;
 	private String senha;
 	
+	public Usuario(String matricula, String nome, String curso, String senha) {
+		
+	}
+	
 	
 	public String getCursoUsuario() {
 		return cursoUsuario;
