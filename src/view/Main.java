@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 //import controller.ListaLivros;
 import controller.Biblioteca;
+import exceptions.CursoBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 
@@ -74,6 +75,7 @@ public class Main {
 						}
 						break;
 					case 3:
+						// buscar livros
 						texto.buscadeLivros();
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
@@ -81,7 +83,15 @@ public class Main {
 							//	listaDeLivros.buscarNome();
 								break;
 							case 2:
-							//	listaDeLivros.buscarCurso();
+								System.out.println("Digite o curso do livro");
+								String cursoDoLivro = ler.next();
+							try {
+								biblioteca.buscarCurso(cursoDoLivro);
+								biblioteca.mostrarLivros();
+							} catch (CursoBuscadoException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							//	listaDeLivros.emprestimo();
 								break;
 						}
@@ -111,6 +121,26 @@ public class Main {
 							break;
 						case 3:
 						//	listaDeLivros.cadastrarLivro();
+							System.out.println("Digite o nome do livro: ");
+							String nomeLivro = ler.next();
+							
+							System.out.println("Digite o código do livro: ");
+							String codigoLivro = ler.next();
+							
+							System.out.println("Digite o curso ao qual pertence o livro: ");
+							String curso = ler.next();
+							
+							System.out.println("O nome do livro é: " + nomeLivro);
+							System.out.println("O código do livro é: " + codigoLivro);
+							System.out.println("O livro pertence ao curso: " + curso);
+							
+							texto.confirmarCadastro();
+							int confirmar = ler.nextInt();
+							switch(confirmar) {
+							case 1:
+								biblioteca.cadastrarLivro(nomeLivro, codigoLivro, curso);
+								System.out.println("Livro cadastrado!");
+							}
 							break;
 						case 4:
 						    ler = new Scanner(System.in);

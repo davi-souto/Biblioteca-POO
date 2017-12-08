@@ -44,16 +44,16 @@ public class ListaLivros {
 			case 1:
 				livros.add(l);
 				quantidadeLivros++;
-				System.out.println("Livro cadastrado!");
+				
 				break;
 		}
 	}
 	
 	public void buscarCurso() {
-		Scanner ler = new Scanner(System.in);
+		//Scanner ler = new Scanner(System.in);
 		
-		System.out.println("Digite o curso do livro");
-		String cursoDoLivro = ler.next();
+		//System.out.println("Digite o curso do livro");
+		//String cursoDoLivro = ler.next();
 		
 		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(cursoDoLivro)) {

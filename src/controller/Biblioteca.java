@@ -1,6 +1,7 @@
 package controller;
 import java.util.ArrayList;
 
+import exceptions.CursoBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 import model.Usuario;
@@ -59,5 +60,30 @@ public class Biblioteca {
 		
 		return null;
 	}
+	
+	public void cadastrarLivro(String nomeLivro, String codigoLivro, String curso) {
+		Livro l = new Livro(nomeLivro, codigoLivro, curso);
+		livros.add(l);
+	}
+	
+	public Livro buscarCurso(String curso) throws CursoBuscadoException {
+		Livro cursoBuscado = null;
+		for(int i = 0; i < livros.size(); i++) {
+			if(livros.get(i).getCurso().equals(curso)) {
+				livros.get(i);
+				cursoBuscado = livros.get(i);
+			}else {
+				throw new CursoBuscadoException();
+			}
+		}
+		return cursoBuscado;
+	}
+	
+	public void mostrarLivros() {
+		for (int i = 0; i < livros.size(); i++) {
+			System.out.println(livros.get(i).getNomeLivro());
+		}
+	}
+	
 	
 }
