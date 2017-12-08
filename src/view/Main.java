@@ -1,16 +1,17 @@
 package view;
 import java.util.Scanner;
 
-import controller.ListaLivros;
+//import controller.ListaLivros;
 import controller.Biblioteca;
 import exceptions.SenhaAdminIncorretaException;
+import exceptions.SenhaUsuarioIncorretaException;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SenhaUsuarioIncorretaException {
 		Scanner ler = new Scanner(System.in);
 		Biblioteca biblioteca = new Biblioteca();
-		ListaLivros listaDeLivros = new ListaLivros();
+	//	ListaLivros listaDeLivros = new ListaLivros();
 		Textos texto = new Textos();
 		int opcaoUsuario = -1;
 		
@@ -25,6 +26,7 @@ public class Main {
 				int menuA = ler.nextInt();
 				switch(menuA) {
 					case 1: 
+						// aceso ao usuario
 						ler = new Scanner(System.in); 
 						
 						System.out.println("Digite sua matricula: ");
@@ -33,10 +35,19 @@ public class Main {
 						System.out.println("Digite sua senha: ");
 						String acessarSenha = ler.nextLine();
 						
-						biblioteca.acessarUsuario(acessarMatricula, acessarSenha);
-						System.out.println(biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getMatricula());
+						
+						System.out.println("-------------------------------------");
+						System.out.println("Olá, "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getNome());
+						System.out.println("Matricula: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getMatricula());
+						System.out.println("Usuario: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getNome());
+						System.out.println("Curso: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getCursoUsuario());
+						//System.out.println("Livros em posse: " );
+						System.out.println("-------------------------------------");
+						
+						
 						break;
 					case 2:
+						// cadastro de usuário.
 						ler = new Scanner(System.in);
 						
 						System.out.println("Digite sua matricula: ");
@@ -51,6 +62,10 @@ public class Main {
 						System.out.println("Digite sua senha: ");
 						String cadastrarSenha = ler.nextLine();
 						
+						System.out.println("Matricula: " + cadastrarMatricula);
+						System.out.println("Nome: " + cadastrarNome);
+						System.out.println("Curso: " + cadastrarCurso);
+						
 						texto.confirmarCadastro();
 						int confirmar = ler.nextInt();
 						switch(confirmar) {
@@ -63,11 +78,11 @@ public class Main {
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
 							case 1:
-								listaDeLivros.buscarNome();
+							//	listaDeLivros.buscarNome();
 								break;
 							case 2:
-								listaDeLivros.buscarCurso();
-								listaDeLivros.emprestimo();
+							//	listaDeLivros.buscarCurso();
+							//	listaDeLivros.emprestimo();
 								break;
 						}
 							
@@ -90,10 +105,12 @@ public class Main {
 							//listaDeUsuarios.buscarUsuario();
 							break;
 						case 2:
+							System.out.println("Quantidade de usuários: " + biblioteca.quantidadeUsuarios());
+							biblioteca.mostrarUsuariosExistentes();
 							//listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:
-							listaDeLivros.cadastrarLivro();
+						//	listaDeLivros.cadastrarLivro();
 							break;
 						case 4:
 						    ler = new Scanner(System.in);

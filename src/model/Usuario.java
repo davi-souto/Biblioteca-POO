@@ -12,6 +12,9 @@ public class Usuario {
 		
 	}
 	
+	public Usuario() {
+		
+	}
 	
 	public String getCursoUsuario() {
 		return cursoUsuario;

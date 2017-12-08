@@ -2,6 +2,7 @@ package controller;
 import java.util.ArrayList;
 
 import exceptions.SenhaAdminIncorretaException;
+import exceptions.SenhaUsuarioIncorretaException;
 import model.Usuario;
 import model.Livro;
 import model.Reserva;
@@ -16,12 +17,14 @@ public class Biblioteca {
 		usuarios.add(u);
 	}
 	
-	public Usuario acessarUsuario(String matricula, String senha) {
+	public Usuario acessarUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException {
 		Usuario usuarioAcessado = null;
 		for (int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matricula)) && (usuarios.get(i).getSenha().equals(senha)) ) {
 				usuarios.get(i);
 				usuarioAcessado = usuarios.get(i);
+			}else {
+				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 		return usuarioAcessado;
@@ -42,6 +45,19 @@ public class Biblioteca {
 		return usuarioExcluido;
 	}
 	
+	public int quantidadeUsuarios() {
+		return usuarios.size();
+	}
 	
+	public void mostrarUsuariosExistentes() {
+		for (int i = 0; i < usuarios.size(); i++) {
+			System.out.println(usuarios.get(i).getNome());
+		}
+	}
+	
+	public Usuario buscarUsuarioExistente(String matricula) {
+		
+		return null;
+	}
 	
 }
