@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import controller.ListaLivros;
 import controller.ListaUsuarios;
+import exceptions.SenhaAdminIncorretaException;
 
 public class Main {
 
@@ -67,7 +68,23 @@ public class Main {
 							listaDeLivros.cadastrarLivro();
 							break;
 						case 4:
-							listaDeUsuarios.removerUsuario();
+						    ler = new Scanner(System.in);
+							System.out.println("Digite a matrícula do usuário a ser excluido: ");
+							String alunoExcluido = ler.nextLine();
+							System.out.println("Digite a senha de administrador para confirmar a ação:");
+							int senha = ler.nextInt();
+						try {
+							boolean result = listaDeUsuarios.removerUsuario(alunoExcluido, senha);
+							if(result) {
+								System.out.println("Usuario removido.");
+							}else {
+								System.out.println("Usuario não foi removido.");
+							}
+							
+						} catch (SenhaAdminIncorretaException e) {
+							// TODO Auto-generated catch block
+							System.out.println(e.getMessage());
+						}
 							break;
 					}
 				}else {

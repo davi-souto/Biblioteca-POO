@@ -6,12 +6,14 @@ import java.util.Scanner;
 import model.Usuario;
 import model.Reserva;
 import controller.ListaLivros;
+import exceptions.SenhaAdminIncorretaException;
 import view.Textos;
 
 
 public class ListaUsuarios {
 	
 	private ArrayList<Usuario> usuarios = new ArrayList <Usuario> ();
+	private ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	Textos t = new Textos();
 	Reserva r = new Reserva();
 	
@@ -121,8 +123,22 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public void removerUsuario() {
-		Scanner ler = new Scanner(System.in);
+	public boolean removerUsuario(String matricula, int senhaAdmin) throws SenhaAdminIncorretaException {
+		boolean usuarioExcluido = false;
+		if (senhaAdmin == 0001) {
+		
+			for (int i = 0; i < usuarios.size(); i++) {
+				if(usuarios.get(i).getMatricula().equals(matricula)) {
+					usuarios.remove(i);
+					usuarioExcluido = true;
+				}
+			}
+		}else {
+			throw new SenhaAdminIncorretaException(); 
+		}
+		
+		return usuarioExcluido;
+	/*	Scanner ler = new Scanner(System.in);
 		System.out.println("Digite a matrícula do usuário a ser excluido: ");
 		String alunoExcluido = ler.nextLine();
 		System.out.println("Digite a senha de administrador para confirmar a ação:");
@@ -137,7 +153,7 @@ public class ListaUsuarios {
 			}
 		}else {
 			System.out.println("Acesso negado!");
-		}
+		}*/
 	}
 	
 	public void mostrarUsuarios() {

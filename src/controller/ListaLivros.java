@@ -109,6 +109,10 @@ public class ListaLivros {
 	public void devolução() {
 	}
 	
+	public ArrayList<Reserva> getReservas(){
+		return reservas;
+	}
+	
 	public void buscarNome() {
 		Scanner ler = new Scanner(System.in);
 		
