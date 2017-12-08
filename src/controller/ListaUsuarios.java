@@ -25,9 +25,6 @@ public class ListaUsuarios {
 		}
 	}
 	
-	public void cadastrarUsuario(String matricula, String nome, String curso, String senha) {
-		
-	}
 	
 	public void buscarUsuario() {
 		// Errado ainda

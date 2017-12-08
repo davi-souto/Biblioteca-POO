@@ -2,14 +2,14 @@ package view;
 import java.util.Scanner;
 
 import controller.ListaLivros;
-import controller.ListaUsuarios;
+import controller.Biblioteca;
 import exceptions.SenhaAdminIncorretaException;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
-		ListaUsuarios listaDeUsuarios = new ListaUsuarios();
+		Biblioteca biblioteca = new Biblioteca();
 		ListaLivros listaDeLivros = new ListaLivros();
 		Textos texto = new Textos();
 		int opcaoUsuario = -1;
@@ -29,9 +29,12 @@ public class Main {
 						
 						System.out.println("Digite sua matricula: ");
 						String acessarMatricula = ler.nextLine();
+						
 						System.out.println("Digite sua senha: ");
 						String acessarSenha = ler.nextLine();
 						
+						biblioteca.acessarUsuario(acessarMatricula, acessarSenha);
+						System.out.println(biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getMatricula());
 						break;
 					case 2:
 						ler = new Scanner(System.in);
@@ -52,7 +55,7 @@ public class Main {
 						int confirmar = ler.nextInt();
 						switch(confirmar) {
 						case 1:
-							
+							biblioteca.cadastrarUsuario(cadastrarMatricula, cadastrarNome, cadastrarCurso, cadastrarSenha);
 						}
 						break;
 					case 3:
@@ -84,10 +87,10 @@ public class Main {
 					int menuB = ler.nextInt();
 					switch(menuB) {
 						case 1:
-							listaDeUsuarios.buscarUsuario();
+							//listaDeUsuarios.buscarUsuario();
 							break;
 						case 2:
-							listaDeUsuarios.mostrarUsuarios();
+							//listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:
 							listaDeLivros.cadastrarLivro();
@@ -99,7 +102,7 @@ public class Main {
 							System.out.println("Digite a senha de administrador para confirmar a ação:");
 							int senha = ler.nextInt();
 						try {
-							boolean result = listaDeUsuarios.removerUsuario(alunoExcluido, senha);
+							boolean result = biblioteca.removerUsuario(alunoExcluido, senha);
 							if(result) {
 								System.out.println("Usuario removido.");
 							}else {
