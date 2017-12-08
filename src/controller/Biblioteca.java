@@ -12,8 +12,8 @@ public class Biblioteca {
 	private ArrayList<Livro> livros = new ArrayList <Livro> ();
 	private ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	
-	public void cadastrarUsuario(String matricula, String nome, String curso, String senha) {
-		Usuario u = new Usuario(matricula, nome, curso, senha);
+	public void cadastrarUsuario(String matricula, String nome, String cursoUsuario, String senha) {
+		Usuario u = new Usuario(matricula, nome, cursoUsuario, senha);
 		usuarios.add(u);
 	}
 	
