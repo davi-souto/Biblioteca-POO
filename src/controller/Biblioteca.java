@@ -13,8 +13,7 @@ public class Biblioteca {
 	private ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	
 	public void cadastrarUsuario(String matricula, String nome, String curso, String senha) {
-		Usuario u = new Usuario(matricula, nome, curso, senha);
-		usuarios.add(u);
+		usuarios.add(new Usuario(matricula, nome, curso, senha));
 	}
 	
 	public Usuario acessarUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException {

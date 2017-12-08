@@ -12,17 +12,16 @@ public class Main {
 		Scanner ler = new Scanner(System.in);
 		Biblioteca biblioteca = new Biblioteca();
 	//	ListaLivros listaDeLivros = new ListaLivros();
-		Textos texto = new Textos();
 		int opcaoUsuario = -1;
 		
 		
 		while (opcaoUsuario != 0) {
-			texto.tipoUsuario();
+			Textos.tipoUsuario();
 			opcaoUsuario = ler.nextInt();
 			
 			switch(opcaoUsuario) {
 			case 1:
-				texto.menuAluno();
+				Textos.menuAluno();
 				int menuA = ler.nextInt();
 				switch(menuA) {
 					case 1: 
@@ -66,7 +65,7 @@ public class Main {
 						System.out.println("Nome: " + cadastrarNome);
 						System.out.println("Curso: " + cadastrarCurso);
 						
-						texto.confirmarCadastro();
+						Textos.confirmarCadastro();
 						int confirmar = ler.nextInt();
 						switch(confirmar) {
 						case 1:
@@ -74,7 +73,7 @@ public class Main {
 						}
 						break;
 					case 3:
-						texto.buscadeLivros();
+						Textos.buscadeLivros();
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
 							case 1:
@@ -98,7 +97,7 @@ public class Main {
 				System.out.println("Digite sua senha de administrador: ");
 				int senhaAdm = ler.nextInt();
 				if (senhaAdm == 0001) {
-					texto.menuAdm();
+					Textos.menuAdm();
 					int menuB = ler.nextInt();
 					switch(menuB) {
 						case 1:
