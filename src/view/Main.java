@@ -61,7 +61,6 @@ public class Main {
 							listaDeUsuarios.buscarUsuario();
 							break;
 						case 2:
-							
 							listaDeUsuarios.mostrarUsuarios();
 							break;
 						case 3:

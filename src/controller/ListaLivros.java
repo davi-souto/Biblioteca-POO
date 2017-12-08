@@ -4,14 +4,18 @@ import java.util.Scanner;
 
 import model.Livro;
 import model.Usuario;
+import model.Reserva;
 import view.Textos;
 
 public class ListaLivros {
 	
 	public ArrayList<Livro> livros = new ArrayList <Livro> ();
+	public ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
 	private int quantidadeLivros;
+	private int quantidadeReserva;
 	Textos texto = new Textos();
-	Usuario usuarios = new Usuario();
+	Usuario usuario = new Usuario();
+	
 	
 	public ListaLivros() {
 		quantidadeLivros = 0;
@@ -55,13 +59,15 @@ public class ListaLivros {
 			if(livros.get(i).getCurso().equals(cursoDoLivro)) {
 				System.out.println("Livros: "+ livros.get(i).getNomeLivro());
 		
-			}	
+			}else {
+				System.out.println("Livros não encontrados");
+			}
 		}	
 	}			
 	
 	
 	public void emprestimo() {
-		
+	
 		Scanner ler = new Scanner(System.in);
 		
 		// ListaUsuarios listaUsuarios = new ListaUsuarios();
@@ -73,12 +79,19 @@ public class ListaLivros {
 		case 1:
 			System.out.println("Digite o nome do livro desejado:");
 			String livroEmprestado = ler.next();
+			System.out.println("Digite sua matrícula:");
+			String matricula = ler.next();
 			System.out.println("Digite sua senha:");
 			String senha = ler.next();
-			// Aqui que vamos tentar ter acesso ao ArrayList de usuarios...
-			if(senha.equals(usuarios.getSenha())) {
+			if(senha.equals("123")) {
 				for (int i = 0; i < livros.size(); i++) {
 					if(livros.get(i).getNomeLivro().equals(livroEmprestado)) {
+						Reserva e = new Reserva();
+						e.setNomeLivro(livros.get(i).getNomeLivro());
+						e.setCodigoLivro(livros.get(i).getCodigoLivro());
+						e.setCursoLivro(livros.get(i).getCurso());
+						reservas.add(e);
+						quantidadeReserva ++;
 						livros.remove(i);
 						quantidadeLivros --;
 						System.out.println("Concluido!");
@@ -103,7 +116,7 @@ public class ListaLivros {
 		String nomeDoLivro = ler.next();
 		
 		for(int i = 0; i < quantidadeLivros; i++) {
-			if(livros.get(i).getNomeLivro().equals(nomeDoLivro))
+			if(livros.get(i).getNomeLivro().equals(nomeDoLivro)) {
 				texto.emprestimoLivro();
 			int opcao = ler.nextInt();
 			switch(opcao) {
@@ -124,6 +137,9 @@ public class ListaLivros {
 				} else {
 					System.out.println("erro!!");
 				}
+			}
+		}else {
+			System.out.println("Livros não encontrados");
 			}
 		}
 	}
