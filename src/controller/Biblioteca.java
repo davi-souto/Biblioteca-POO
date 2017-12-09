@@ -128,8 +128,25 @@ public class Biblioteca {
 	
 	public void mostrarLivros() {
 		for (int i = 0; i < livros.size(); i++) {
-			System.out.println(livros.get(i).getNomeLivro());
+			System.out.println("Livros: " + livros.get(i).getNomeLivro());
 		}
+	}
+	
+	public boolean emprestimo(int senha, String nomeLivro) {
+		boolean livroEmprestado = false;
+		if(senha == 123) {
+			for(int i = 0; i < livros.size(); i++) {
+				if(livros.get(i).getNomeLivro().equals(nomeLivro)) {
+					
+					
+					
+				}
+			}
+		}
+		
+		
+		
+		return livroEmprestado;
 	}
 	
 	
@@ -142,6 +159,7 @@ public class Biblioteca {
 					if(livros.get(o).getNomeLivro().equals(nomeLivro)) {
 						Reserva r = new Reserva(usuarios.get(i), livros.get(o));
 						reservas.add(r);
+						livros.remove(r);
 					}
 				}
 			}
