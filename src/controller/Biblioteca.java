@@ -56,20 +56,20 @@ public class Biblioteca {
 	
 	public void mostrarUsuariosExistentes() {
 		for (int i = 0; i < usuarios.size(); i++) {
-			System.out.println(usuarios.get(i).getNome());
+			System.out.println(usuarios.get(i).getNome() + " : " + usuarios.get(i).getCursoUsuario());
 		}
 	}
 	
-	public Usuario buscarUsuarioExistenteNomeOuMatricula(String nomeOuMatricula) {
-		Usuario usuarioBuscadoNomeMatricula = null;
+	public Usuario buscarUsuarioExistenteMatricula(String matricula) {
+		Usuario usuarioBuscadoMatricula = null;
 		for (int i =0; i < usuarios.size(); i++) {
-			if((usuarios.get(i).getMatricula().equals(nomeOuMatricula)) || (usuarios.get(i).getNome().equals(nomeOuMatricula))) {
+			if(usuarios.get(i).getMatricula().equals(matricula)) {
 				usuarios.get(i);
-				usuarioBuscadoNomeMatricula = usuarios.get(i);
+				usuarioBuscadoMatricula = usuarios.get(i);
 				
 			}
 		}
-		return usuarioBuscadoNomeMatricula;
+		return usuarioBuscadoMatricula;
 	}
 	
 	public void mostrarUsuariosDoCurso(String curso) {
@@ -121,6 +121,20 @@ public class Biblioteca {
 	
 	
 	// RESERVAS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public void cadastrarReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) {
+		for (int i = 0; i < usuarios.size(); i++) {
+			if((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
+				for (int o = 0; i < livros.size(); i++) {
+					if(livros.get(o).getNomeLivro().equals(nomeLivro)) {
+						Reserva r = new Reserva(usuarios.get(i), livros.get(o));
+						reservas.add(r);
+					}
+				}
+			}
+		}
+	}
+	
 	
 	
 }

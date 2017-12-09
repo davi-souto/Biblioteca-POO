@@ -87,8 +87,11 @@ public class Main {
 								System.out.println("Digite o curso do livro");
 								String cursoDoLivro = ler.next();
 							try {
-								biblioteca.buscarCurso(cursoDoLivro);
+								biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
 								biblioteca.mostrarLivros();
+								
+								
+								// biblioteca.cadastrarReserva(matriculaUsuario, senhaUsuario, nomeLivro);
 							} catch (CursoBuscadoException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -121,12 +124,12 @@ public class Main {
 								case 1: 
 									// buscar pelo nome ou matricula
 									
-									System.out.println("Digite o nome ou a matricula do usuario:");
-									String nomeMatriculaBuscarUsuario = ler.next();
+									System.out.println("Digite a matricula do usuario:");
+									String matriculaBuscarUsuario = ler.next();
 								
-									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getMatricula());
-									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getNome());
-									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getCursoUsuario());
+									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getMatricula());
+									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getNome());
+									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getCursoUsuario());
 									break;
 								case 2:
 									// buscar pelo curso
@@ -138,11 +141,11 @@ public class Main {
 									biblioteca.mostrarUsuariosDoCurso(cursoBuscarUsuario.toUpperCase());
 									
 									System.out.println("Digite o nome ou matrícula do usuário:");
-									String nomeMatriculaBuscarUsuario2 = ler.next();
+									String matriculaBuscarUsuario2 = ler.next();
 									
-									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getMatricula());
-									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getNome());
-									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getCursoUsuario());
+									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getMatricula());
+									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getNome());
+									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getCursoUsuario());
 									break;
 								}
 							break;

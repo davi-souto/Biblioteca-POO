@@ -9,6 +9,10 @@ public class Reserva {
 		this.livro = livro;
 	}
 	
+	public Reserva() {
+		
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
