@@ -100,6 +100,19 @@ public class Biblioteca {
 		livros.add(l);
 	}
 	
+	public Livro buscarNome(String nomeLivro) throws LivroBuscadoException {
+		Livro nomeBuscado = null;
+		for(int i = 0; i < livros.size(); i++) {
+			if(livros.get(i).getNomeLivro().equals(nomeLivro)) {
+				livros.get(i);
+				nomeBuscado = livros.get(i);
+			}else {
+				throw new LivroBuscadoException();
+			}
+		}
+		return nomeBuscado;
+	}
+	
 	public Livro buscarCurso(String curso) throws CursoBuscadoException {
 		Livro cursoBuscado = null;
 		for(int i = 0; i < livros.size(); i++) {

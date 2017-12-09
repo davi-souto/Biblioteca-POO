@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 //import controller.ListaLivros;
 import controller.Biblioteca;
+import controller.LivroBuscadoException;
 import exceptions.CursoBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
@@ -81,13 +82,20 @@ public class Main {
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
 							case 1:
-							//	listaDeLivros.buscarNome();
+								System.out.println("Digite o nome do livro");
+								String nomeDoLivro = ler.next();
+							try {
+								biblioteca.buscarNome(nomeDoLivro);
+							} catch (LivroBuscadoException e2) {
+								// TODO Auto-generated catch block
+								e2.printStackTrace();
+							}
 								break;
 							case 2:
 								System.out.println("Digite o curso do livro");
 								String cursoDoLivro = ler.next();
 							try {
-								biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
+								biblioteca.buscarCurso(cursoDoLivro);
 								biblioteca.mostrarLivros();
 								
 								

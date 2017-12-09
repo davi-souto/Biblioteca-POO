@@ -49,21 +49,21 @@ public class ListaLivros {
 		}
 	}
 	
-	public void buscarCurso() {
+	//public void buscarCurso() {
 		//Scanner ler = new Scanner(System.in);
 		
 		//System.out.println("Digite o curso do livro");
 		//String cursoDoLivro = ler.next();
 		
-		for(int i = 0; i < livros.size(); i++) {
-			if(livros.get(i).getCurso().equals(cursoDoLivro)) {
-				System.out.println("Livros: "+ livros.get(i).getNomeLivro());
+		//for(int i = 0; i < livros.size(); i++) {
+			//if(livros.get(i).getCurso().equals(cursoDoLivro)) {
+				//System.out.println("Livros: "+ livros.get(i).getNomeLivro());
 		
-			}else {
-				System.out.println("Livros não encontrados");
-			}
-		}	
-	}			
+			//}else {
+				//System.out.println("Livros não encontrados");
+			//}
+		//}	
+	//}			
 	
 	
 	public void emprestimo() {
