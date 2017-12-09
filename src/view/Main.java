@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 //import controller.ListaLivros;
 import controller.Biblioteca;
+import exceptions.CursoBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 
@@ -54,10 +55,10 @@ public class Main {
 						
 						System.out.println("Digite seu nome: ");
 						String cadastrarNome = ler.nextLine();
-						
+												
 						System.out.println("Digite seu curso: ");
 						String cadastrarCurso = ler.nextLine();
-						
+	
 						System.out.println("Digite sua senha: ");
 						String cadastrarSenha = ler.nextLine();
 						
@@ -69,18 +70,29 @@ public class Main {
 						int confirmar = ler.nextInt();
 						switch(confirmar) {
 						case 1:
-							biblioteca.cadastrarUsuario(cadastrarMatricula, cadastrarNome, cadastrarCurso, cadastrarSenha);
+							biblioteca.cadastrarUsuario(cadastrarMatricula.toUpperCase(), cadastrarNome.toUpperCase(), cadastrarCurso.toUpperCase(), cadastrarSenha);
 						}
 						break;
 					case 3:
+
+						// buscar livros
 						Textos.buscadeLivros();
+
 						int menuLivro = ler.nextInt();
 						switch(menuLivro) {
 							case 1:
 							//	listaDeLivros.buscarNome();
 								break;
 							case 2:
-							//	listaDeLivros.buscarCurso();
+								System.out.println("Digite o curso do livro");
+								String cursoDoLivro = ler.next();
+							try {
+								biblioteca.buscarCurso(cursoDoLivro);
+								biblioteca.mostrarLivros();
+							} catch (CursoBuscadoException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							//	listaDeLivros.emprestimo();
 								break;
 						}
@@ -101,17 +113,73 @@ public class Main {
 					int menuB = ler.nextInt();
 					switch(menuB) {
 						case 1:
-							//listaDeUsuarios.buscarUsuario();
+							// buscar usuarios
+								
+								Textos.buscaDeUsuario();
+								int menuBuscaUsuario = ler.nextInt();
+								switch(menuBuscaUsuario) {
+								case 1: 
+									// buscar pelo nome ou matricula
+									
+									System.out.println("Digite o nome ou a matricula do usuario:");
+									String nomeMatriculaBuscarUsuario = ler.next();
+								
+									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getMatricula());
+									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getNome());
+									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario.toUpperCase()).getCursoUsuario());
+									break;
+								case 2:
+									// buscar pelo curso
+									
+									System.out.println("Digite o curso do usuario:");
+									String cursoBuscarUsuario = ler.next();
+									
+									System.out.println("Usuarios do curso:");
+									biblioteca.mostrarUsuariosDoCurso(cursoBuscarUsuario.toUpperCase());
+									
+									System.out.println("Digite o nome ou matrícula do usuário:");
+									String nomeMatriculaBuscarUsuario2 = ler.next();
+									
+									System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getMatricula());
+									System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getNome());
+									System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteNomeOuMatricula(nomeMatriculaBuscarUsuario2.toUpperCase()).getCursoUsuario());
+									break;
+								}
 							break;
 						case 2:
+							// mostrar quantidade de usuarios e usuarios
+							
 							System.out.println("Quantidade de usuários: " + biblioteca.quantidadeUsuarios());
 							biblioteca.mostrarUsuariosExistentes();
-							//listaDeUsuarios.mostrarUsuarios();
+						
 							break;
 						case 3:
-						//	listaDeLivros.cadastrarLivro();
+							//	cadastro de livros
+							
+							System.out.println("Digite o nome do livro: ");
+							String nomeLivro = ler.next();
+							
+							System.out.println("Digite o código do livro: ");
+							String codigoLivro = ler.next();
+							
+							System.out.println("Digite o curso ao qual pertence o livro: ");
+							String curso = ler.next();
+							
+							System.out.println("O nome do livro é: " + nomeLivro);
+							System.out.println("O código do livro é: " + codigoLivro);
+							System.out.println("O livro pertence ao curso: " + curso);
+							
+							Textos.confirmarCadastro();
+							int confirmar = ler.nextInt();
+							switch(confirmar) {
+							case 1:
+								biblioteca.cadastrarLivro(nomeLivro.toUpperCase(), codigoLivro.toUpperCase(), curso.toUpperCase());
+								System.out.println("Livro cadastrado!");
+							}
 							break;
 						case 4:
+							// remover usuario
+							
 						    ler = new Scanner(System.in);
 							System.out.println("Digite a matrícula do usuário a ser excluido: ");
 							String alunoExcluido = ler.nextLine();
