@@ -93,6 +93,7 @@ public class Main {
 								System.out.println("Digite o nome do livro: ");
 								String livro = ler.next();
 								biblioteca.cadastrarReserva(matricula, senha, livro);
+								System.out.println("Concluido!");
 							} catch (LivroBuscadoException e2) {
 								// TODO Auto-generated catch block
 								e2.printStackTrace();
@@ -104,6 +105,20 @@ public class Main {
 							try {
 								biblioteca.buscarCurso(cursoDoLivro);
 								biblioteca.mostrarLivros();
+								Textos.emprestimoLivro();
+								int escolha = ler.nextInt();
+								switch(escolha) {
+								case 1:
+									System.out.println("Digite sua matricula: ");
+									String matricula = ler.next();
+									System.out.println("Digite sua senha: ");
+									String senha = ler.next();
+									System.out.println("Digite o nome do livro: ");
+									String livro = ler.next();
+									biblioteca.cadastrarReserva(matricula, senha, livro);
+									System.out.println("Concluido!");
+								}
+										
 								
 								
 								// biblioteca.cadastrarReserva(matriculaUsuario, senhaUsuario, nomeLivro);
