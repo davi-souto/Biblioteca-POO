@@ -135,7 +135,16 @@ public class Main {
 							
 						break;
 					case 4:
-							
+						System.out.println("Digite sua matricula: ");
+						String devolverMatricula = ler.next();
+						
+						System.out.println("Digite sua senha: ");
+						String devolverSenha = ler.next();
+						
+						System.out.println("Digite o nome do livro: ");
+						String devolverLivro = ler.next();
+						
+						biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro);
 						break;
 
 					}

@@ -166,6 +166,21 @@ public class Biblioteca {
 		}
 	}
 	
+	public void removerReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) {
+		for (int i = 0; i < usuarios.size(); i++) {
+			if ((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
+				for (int r = 0; r < reservas.size(); r++) {
+					if (reservas.get(r).getLivro().getNomeLivro().equals(nomeLivro)) {
+						Livro l = new Livro(nomeLivro, reservas.get(r).getLivro().getCodigoLivro(), reservas.get(r).getLivro().getCurso());
+						livros.add(l);
+						reservas.remove(r);
+						System.out.println("Concluído");
+					}
+				}
+			}
+		}
+	}
+	
 	public int quantidadeDeReservas() {
 		return reservas.size();
 	}
