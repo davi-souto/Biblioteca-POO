@@ -155,17 +155,26 @@ public class Biblioteca {
 	public void cadastrarReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) {
 		for (int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
-				for (int o = 0; i < livros.size(); i++) {
+				for (int o = 0; o < livros.size(); o++) {
 					if(livros.get(o).getNomeLivro().equals(nomeLivro)) {
 						Reserva r = new Reserva(usuarios.get(i), livros.get(o));
 						reservas.add(r);
-						livros.remove(r);
+						livros.remove(o);
 					}
 				}
 			}
 		}
 	}
 	
+	public int quantidadeDeReservas() {
+		return reservas.size();
+	}
 	
+	public void mostrarReservasExistentes() {
+		for (int i = 0; i < reservas.size(); i++) {
+			System.out.println("Usuario em posse: " + reservas.get(i).getUsuario().getNome()  + " :Matrícula do usuário: " + reservas.get(i).getUsuario().getMatricula());
+			System.out.println("Livro emprestado: "	+ reservas.get(i).getLivro().getNomeLivro() + " :Código do livro: " + reservas.get(i).getLivro().getCodigoLivro() + " :Curso do livro: " + reservas.get(i).getLivro().getCurso());
+		}
+	}
 	
 }

@@ -38,6 +38,7 @@ public class Textos {
 		System.out.println("2 - Quantidade de usuarios");
 		System.out.println("3 - Cadastrar livro");
 		System.out.println("4 - Remover usuário");
+		System.out.println("5 - Mostrar reservas existentes");
 		System.out.println("-------------------------------------");
 	}
 	

@@ -36,7 +36,7 @@ public class Main {
 						System.out.println("Digite sua senha: ");
 						String acessarSenha = ler.nextLine();
 						
-						
+						try {
 						System.out.println("-------------------------------------");
 						System.out.println("Olá, "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getNome());
 						System.out.println("Matricula: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getMatricula());
@@ -44,6 +44,9 @@ public class Main {
 						System.out.println("Curso: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getCursoUsuario());
 						//System.out.println("Livros em posse: " );
 						System.out.println("-------------------------------------");
+						}catch (SenhaUsuarioIncorretaException e3) {
+							e3.printStackTrace();
+						}
 						
 						
 						break;
@@ -230,6 +233,13 @@ public class Main {
 							// TODO Auto-generated catch block
 							System.out.println(e.getMessage());
 						}
+							break;
+						case 5:
+							
+							System.out.println("Quantidade de reservas existentes: " + biblioteca.quantidadeDeReservas());
+							System.out.println("Reservas: ");
+							biblioteca.mostrarReservasExistentes();
+							
 							break;
 					}
 				}else {
