@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 //import controller.ListaLivros;
 import controller.Biblioteca;
-import controller.LivroBuscadoException;
 import exceptions.CursoBuscadoException;
+import exceptions.LivroBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 

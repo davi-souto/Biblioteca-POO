@@ -2,6 +2,7 @@ package controller;
 import java.util.ArrayList;
 
 import exceptions.CursoBuscadoException;
+import exceptions.LivroBuscadoException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 import model.Usuario;
