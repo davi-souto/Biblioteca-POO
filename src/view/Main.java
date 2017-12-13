@@ -88,14 +88,14 @@ public class Main {
 								System.out.println("Digite o nome do livro");
 								String nomeDoLivro = ler.next();
 							try {
-								biblioteca.buscarNome(nomeDoLivro);
+								biblioteca.buscarNome(nomeDoLivro.toUpperCase());
 								System.out.println("Digite sua matricula: ");
 								String matricula = ler.next();
 								System.out.println("Digite sua senha: ");
 								String senha = ler.next();
 								System.out.println("Digite o nome do livro: ");
 								String livro = ler.next();
-								biblioteca.cadastrarReserva(matricula, senha, livro);
+								biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 								System.out.println("Concluido!");
 							} catch (LivroBuscadoException e2) {
 								// TODO Auto-generated catch block
@@ -105,9 +105,9 @@ public class Main {
 							case 2:
 								System.out.println("Digite o curso do livro");
 								String cursoDoLivro = ler.next();
-							try {
-								biblioteca.buscarCurso(cursoDoLivro);
-								biblioteca.mostrarLivros();
+							//try {
+								biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
+								//biblioteca.mostrarLivros();
 								Textos.emprestimoLivro();
 								int escolha = ler.nextInt();
 								switch(escolha) {
@@ -118,23 +118,25 @@ public class Main {
 									String senha = ler.next();
 									System.out.println("Digite o nome do livro: ");
 									String livro = ler.next();
-									biblioteca.cadastrarReserva(matricula, senha, livro);
+									biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 									System.out.println("Concluido!");
 								}
 										
 								
 								
 								// biblioteca.cadastrarReserva(matriculaUsuario, senhaUsuario, nomeLivro);
-							} catch (CursoBuscadoException e1) {
+							//} catch (CursoBuscadoException e1) {
 								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							//	listaDeLivros.emprestimo();
+							//	e1.printStackTrace();
+							//}
+					
 								break;
 						}
 							
 						break;
 					case 4:
+						// Devolver livro/Fim da reserva
+						
 						System.out.println("Digite sua matricula: ");
 						String devolverMatricula = ler.next();
 						
@@ -144,7 +146,7 @@ public class Main {
 						System.out.println("Digite o nome do livro: ");
 						String devolverLivro = ler.next();
 						
-						biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro);
+						biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro.toUpperCase());
 						break;
 
 					}
@@ -218,7 +220,7 @@ public class Main {
 							int confirmar = ler.nextInt();
 							switch(confirmar) {
 							case 1:
-								biblioteca.cadastrarLivro(nomeLivro, codigoLivro, curso);
+								biblioteca.cadastrarLivro(nomeLivro.toUpperCase(), codigoLivro, curso.toUpperCase());
 								System.out.println("Livro cadastrado!");
 							}
 							break;

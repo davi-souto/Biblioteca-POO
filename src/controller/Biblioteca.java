@@ -114,17 +114,18 @@ public class Biblioteca {
 		return nomeBuscado;
 	}
 	
-	public Livro buscarCurso(String curso) throws CursoBuscadoException {
-		Livro cursoBuscado = null;
+	public void buscarCurso(String curso) { //throws CursoBuscadoException {
+		//Livro cursoBuscado = null;
 		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(curso)) {
-				livros.get(i);
-				cursoBuscado = livros.get(i);
-			}else {
-				throw new CursoBuscadoException();
-			}
+				System.out.println("Livro: " + livros.get(i).getNomeLivro());
+				
+				//cursoBuscado = livros.get(i);
+			}//else {
+			//throw new CursoBuscadoException();
+			//}
 		}
-		return cursoBuscado;
+		// return cursoBuscado;
 	}
 	
 	public void mostrarLivros() {
