@@ -124,8 +124,6 @@ public class Biblioteca {
 				System.out.println("Livro: " + livros.get(i).getNomeLivro());
 				
 				//cursoBuscado = livros.get(i);
-			}else {
-				System.out.println("Curso de livro não encontrado!");
 			}
 		}
 		// return cursoBuscado;
