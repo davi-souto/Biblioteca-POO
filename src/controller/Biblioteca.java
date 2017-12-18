@@ -3,8 +3,10 @@ import java.util.ArrayList;
 
 import exceptions.CursoBuscadoException;
 import exceptions.LivroBuscadoException;
+import exceptions.MatriculaUsuarioException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
+import exceptions.UsuarioMatriculaExistente;
 import model.Usuario;
 import model.Livro;
 import model.Reserva;
@@ -21,6 +23,7 @@ public class Biblioteca {
 	public void cadastrarUsuario(String matricula, String nome, String cursoUsuario, String senha) {
 		Usuario u = new Usuario(matricula, nome, cursoUsuario, senha);
 		usuarios.add(u);
+		
 	}
 	
 	public Usuario acessarUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException {
@@ -121,9 +124,9 @@ public class Biblioteca {
 				System.out.println("Livro: " + livros.get(i).getNomeLivro());
 				
 				//cursoBuscado = livros.get(i);
-			}//else {
-			//throw new CursoBuscadoException();
-			//}
+			}else {
+				System.out.println("Curso de livro não encontrado!");
+			}
 		}
 		// return cursoBuscado;
 	}
