@@ -100,6 +100,9 @@ public class Biblioteca {
 	
 	
 	public void cadastrarLivro(String nomeLivro, String codigoLivro, String curso) {
+		if(curso.equals("MATEMATICA") || curso.equals("TADS")) {
+			
+		}
 		Livro l = new Livro(nomeLivro, codigoLivro, curso);
 		livros.add(l);
 	}
@@ -117,16 +120,13 @@ public class Biblioteca {
 		return nomeBuscado;
 	}
 	
-	public void buscarCurso(String curso) { //throws CursoBuscadoException {
-		//Livro cursoBuscado = null;
+	
+	public void buscarCurso(String curso) { 
 		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(curso)) {
-				System.out.println("Livro: " + livros.get(i).getNomeLivro());
-				
-				//cursoBuscado = livros.get(i);
+				System.out.println("Livro: " + livros.get(i).getNomeLivro());	
 			}
 		}
-		// return cursoBuscado;
 	}
 	
 	public void mostrarLivros() {

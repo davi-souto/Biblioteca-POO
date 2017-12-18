@@ -126,9 +126,8 @@ public class Main {
 								case 2:
 									System.out.println("Digite o curso do livro");
 									String cursoDoLivro = ler.next();
-								//try {
 									biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
-									//biblioteca.mostrarLivros();
+									
 									Textos.emprestimoLivro();
 									int escolha = ler.nextInt();
 									switch(escolha) {
@@ -142,14 +141,6 @@ public class Main {
 										biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 										System.out.println("Concluido!");
 									}
-											
-									
-									
-									// biblioteca.cadastrarReserva(matriculaUsuario, senhaUsuario, nomeLivro);
-								//} catch (CursoBuscadoException e1) {
-									// TODO Auto-generated catch block
-								//	e1.printStackTrace();
-								//}
 						
 									break;
 							}
