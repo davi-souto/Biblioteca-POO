@@ -1,7 +1,7 @@
 package view;
-import java.util.Scanner;
 
-//import controller.ListaLivros;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import controller.Biblioteca;
 import exceptions.CursoBuscadoException;
 import exceptions.LivroBuscadoException;
@@ -9,7 +9,7 @@ import exceptions.MatriculaUsuarioException;
 import exceptions.NomeUsuarioException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
-import exceptions.UsuarioMatriculaExistente;
+
 
 public class Main {
 
@@ -24,14 +24,13 @@ public class Main {
 			Textos.tipoUsuario();
 			//
 				opcaoUsuario = ler.nextInt();
-				
 				switch(opcaoUsuario) {
 				case 1:
 					Textos.menuAluno();
 					int menuA = ler.nextInt();
 					switch(menuA) {
 						case 1: 
-							// aceso ao usuario
+							// aceso ao usuario----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 							ler = new Scanner(System.in); 
 							
 							System.out.println("Digite sua matricula: ");
@@ -46,16 +45,33 @@ public class Main {
 							System.out.println("Matricula: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getMatricula());
 							System.out.println("Usuario: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getNome());
 							System.out.println("Curso: "  + biblioteca.acessarUsuario(acessarMatricula, acessarSenha).getCursoUsuario());
-							//System.out.println("Livros em posse: " );
+							biblioteca.livrosEmPosseUsuario(acessarMatricula, acessarSenha);
 							System.out.println("-------------------------------------");
+							Textos.menuOpcoesAluno();
+							int menuA1 = ler.nextInt();
+							switch(menuA1) {
+							case 1:
+								System.out.println("Digite sua antiga senha:");
+								String trocarSenhaAtual = ler.next();
+								System.out.println("Digite sua nova senha:");
+								String trocarSenhaNova = ler.next();
+								System.out.println("Confirme sua senha atual:");
+								String trocarSenhaNovaConfirmar = ler.next();
+								biblioteca.trocarSenhaUsuario(trocarSenhaAtual, trocarSenhaNova, trocarSenhaNovaConfirmar);
+								break;
+							}
+							
 							}catch (SenhaUsuarioIncorretaException e3) {
 								System.out.println("Senha ou matrícula incorreta");
+							}catch(NullPointerException e7) {
+								System.out.println("Não existe usuarios no momento.");
 							}
+							
 							
 							
 							break;
 						case 2:
-							// cadastro de usuário.
+							// cadastro de usuário----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 							ler = new Scanner(System.in);
 							try {
 								System.out.println("Digite sua matricula: ");
@@ -100,7 +116,7 @@ public class Main {
 							break;
 						case 3:
 	
-							// buscar livros
+							// buscar livros----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 							Textos.buscadeLivros();
 	
 							int menuLivro = ler.nextInt();
@@ -119,16 +135,15 @@ public class Main {
 									biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 									System.out.println("Concluido!");
 								} catch (LivroBuscadoException e2) {
-									// TODO Auto-generated catch block
-									e2.printStackTrace();
+									System.out.println("Livro não encontrado!");
 								}
 									break;
 								case 2:
 									biblioteca.mostrarCursos();
 									System.out.println("Digite o curso do livro desejado");
 									String cursoDoLivro = ler.next();
+								try {	
 									biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
-									
 									Textos.emprestimoLivro();
 									int escolha = ler.nextInt();
 									switch(escolha) {
@@ -141,14 +156,17 @@ public class Main {
 										String livro = ler.next();
 										biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 										System.out.println("Concluido!");
+								}
+									
+									} catch (CursoBuscadoException e2) {
+										System.out.println("Curso não existente");
 									}
-						
 									break;
 							}
 								
 							break;
 						case 4:
-							// Devolver livro/Fim da reserva
+							// Devolver livro/Fim da reserva----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 							
 							System.out.println("Digite sua matricula: ");
 							String devolverMatricula = ler.next();
@@ -173,13 +191,13 @@ public class Main {
 						int menuB = ler.nextInt();
 						switch(menuB) {
 							case 1:
-								// buscar usuarios
+								// buscar usuarios----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 									
 									Textos.buscaDeUsuario();
 									int menuBuscaUsuario = ler.nextInt();
 									switch(menuBuscaUsuario) {
 									case 1: 
-										// buscar pelo nome ou matricula
+										// buscar pelo nome ou matricula++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 										
 										System.out.println("Digite a matricula do usuario:");
 										String matriculaBuscarUsuario = ler.next();
@@ -189,7 +207,7 @@ public class Main {
 										System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getCursoUsuario());
 										break;
 									case 2:
-										// buscar pelo curso
+										// buscar pelo curso++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 										
 										System.out.println("Digite o curso do usuario:");
 										String cursoBuscarUsuario = ler.next();
@@ -207,14 +225,14 @@ public class Main {
 									}
 								break;
 							case 2:
-								// mostrar quantidade de usuarios e usuarios
+								// mostrar quantidade de usuarios e usuarios---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 								
 								System.out.println("Quantidade de usuários: " + biblioteca.quantidadeUsuarios());
 								biblioteca.mostrarUsuariosExistentes();
 							
 								break;
 							case 3:
-								//	cadastro de livros
+								//	cadastro de livros----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 								
 								System.out.println("Digite o nome do livro: ");
 								String nomeLivro = ler.next();
@@ -238,7 +256,7 @@ public class Main {
 								}
 								break;
 							case 4:
-								// remover usuario
+								// remover usuario----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 								
 							    ler = new Scanner(System.in);
 								System.out.println("Digite a matrícula do usuário a ser excluido: ");

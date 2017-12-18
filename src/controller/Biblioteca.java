@@ -1,20 +1,21 @@
 package controller;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import exceptions.CursoBuscadoException;
 import exceptions.LivroBuscadoException;
-import exceptions.MatriculaUsuarioException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
-import exceptions.UsuarioMatriculaExistente;
 import model.Usuario;
 import model.Livro;
 import model.Reserva;
+import java.util.GregorianCalendar;
 
 public class Biblioteca {
 	private ArrayList<Usuario> usuarios = new ArrayList <Usuario> ();
 	private ArrayList<Livro> livros = new ArrayList <Livro> ();
 	private ArrayList<Reserva> reservas = new ArrayList <Reserva> ();
+	GregorianCalendar data = new GregorianCalendar();
 	
 	
 	// USUÁRIOS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,6 +39,40 @@ public class Biblioteca {
 		}
 		return usuarioAcessado;
 	}
+	
+	public void trocarSenhaUsuario(String senhaAtual, String senhaNova, String senhaNovaConfirmar) {
+		for (int i = 0; i < usuarios.size(); i++) {
+			if((usuarios.get(i).getSenha().equals(senhaAtual)) ) {
+				if (senhaNova.equals(senhaNovaConfirmar)) {
+					usuarios.get(i).setSenha(senhaNova);
+					System.out.println("Operação concluida!");
+				}
+			}
+		}
+	}
+	
+	public void livrosEmPosseUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException{
+		System.out.println("Livros em posse: " );
+		for (int i = 0; i < usuarios.size(); i++) {
+			if((usuarios.get(i).getMatricula().equals(matricula)) && (usuarios.get(i).getSenha().equals(senha)) ) {
+				usuarios.get(i);
+				for(int o = 0; o < reservas.size(); o++) {
+					if(usuarios.get(i).getMatricula().equals(reservas.get(o).getUsuario().getMatricula())) {
+						System.out.println("Livro: " + reservas.get(o).getLivro().getNomeLivro() + " Curso: " + reservas.get(o).getLivro().getCurso() + " Data da reserva: " + reservas.get(o).getData().get(Calendar.DAY_OF_MONTH) + "/" + reservas.get(o).getData().get(Calendar.MONTH) + "\nData prevista para devolução: " 
+						+ reservas.get(o).getData().get(Calendar.DAY_OF_MONTH + 7) + "/" + reservas.get(o).getData().get(Calendar.MONTH));
+					}
+				}
+			}else {
+				throw new SenhaUsuarioIncorretaException();
+			}
+		}
+	}
+	
+	//public void renovarLivroEmPosseUsuario(String nomeLivro, String matriculaUsuario) {
+		//for (int i = 0; i < reservas.size(); i++) {
+			
+		//}
+	//}
 	
 	public boolean removerUsuario(String matricula, int senhaAdmin) throws SenhaAdminIncorretaException {
 		boolean usuarioExcluido = false;
@@ -169,7 +204,7 @@ public class Biblioteca {
 			if((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
 				for (int o = 0; o < livros.size(); o++) {
 					if(livros.get(o).getNomeLivro().equals(nomeLivro)) {
-						Reserva r = new Reserva(usuarios.get(i), livros.get(o));
+						Reserva r = new Reserva(usuarios.get(i), livros.get(o), data);
 						reservas.add(r);
 						livros.remove(o);
 					}
@@ -200,7 +235,10 @@ public class Biblioteca {
 	public void mostrarReservasExistentes() {
 		for (int i = 0; i < reservas.size(); i++) {
 			System.out.println("Usuario em posse: " + reservas.get(i).getUsuario().getNome()  + " :Matrícula do usuário: " + reservas.get(i).getUsuario().getMatricula());
-			System.out.println("Livro emprestado: "	+ reservas.get(i).getLivro().getNomeLivro() + " :Código do livro: " + reservas.get(i).getLivro().getCodigoLivro() + " :Curso do livro: " + reservas.get(i).getLivro().getCurso());
+			System.out.println("------------------------------------------");
+			System.out.println("Livro emprestado: "	+ reservas.get(i).getLivro().getNomeLivro() + " :Curso do livro: " + reservas.get(i).getLivro().getCurso());
+			System.out.println("------------------------------------------");
+			System.out.println("Data de empréstimo: " + reservas.get(i).getData().get(Calendar.DAY_OF_MONTH) + "/" + reservas.get(i).getData().get(Calendar.MONTH) + "  :Previsão de Devolução: " + reservas.get(i).getData().get(Calendar.DAY_OF_MONTH + 7) + "/" + reservas.get(i).getData().get(Calendar.MONTH));
 		}
 	}
 	

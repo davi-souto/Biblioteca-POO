@@ -18,6 +18,14 @@ public class Textos {
 		System.out.println("-------------------------------------");
 	}
 	
+	public static void menuOpcoesAluno() {
+		System.out.println("-------------------------------------");
+		System.out.println("1 - Trocar senha");
+		System.out.println("2 - Renovar empréstimo");
+		System.out.println("0 - Sair");
+		System.out.println("-------------------------------------");
+	}
+	
 	public static void buscadeLivros() {
 		System.out.println("-------------------------------------");
 		System.out.println("1 - Buscar por nome");
