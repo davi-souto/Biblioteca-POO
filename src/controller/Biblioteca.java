@@ -121,10 +121,12 @@ public class Biblioteca {
 	}
 	
 	
-	public void buscarCurso(String curso) { 
+	public void buscarCurso(String curso) throws CursoBuscadoException { 
 		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(curso)) {
 				System.out.println("Livro: " + livros.get(i).getNomeLivro());	
+			}else {
+				throw new CursoBuscadoException();
 			}
 		}
 	}
@@ -145,12 +147,19 @@ public class Biblioteca {
 					
 				}
 			}
-		}
-		
-		
-		
+		}	
 		return livroEmprestado;
 	}
+	
+	public void mostrarCursos() {
+		System.out.println("-------------------------------------");
+		System.out.println("1 - TADS");
+		System.out.println("2 - Matemática");
+		System.out.println("3 - Engenharia");
+		System.out.println("4 - Línguas");
+		System.out.println("-------------------------------------");
+	}
+	
 	
 	
 	// RESERVAS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

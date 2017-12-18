@@ -13,7 +13,7 @@ import exceptions.UsuarioMatriculaExistente;
 
 public class Main {
 
-	public static void main(String[] args) throws SenhaUsuarioIncorretaException, MatriculaUsuarioException, NomeUsuarioException {
+	public static void main(String[] args) throws SenhaUsuarioIncorretaException, MatriculaUsuarioException, NomeUsuarioException, CursoBuscadoException {
 		Scanner ler = new Scanner(System.in);
 		Biblioteca biblioteca = new Biblioteca();
 	//	ListaLivros listaDeLivros = new ListaLivros();
@@ -124,7 +124,8 @@ public class Main {
 								}
 									break;
 								case 2:
-									System.out.println("Digite o curso do livro");
+									biblioteca.mostrarCursos();
+									System.out.println("Digite o curso do livro desejado");
 									String cursoDoLivro = ler.next();
 									biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
 									
