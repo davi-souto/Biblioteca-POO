@@ -65,8 +65,6 @@ public class Main {
 						biblioteca.renovarLivroEmPosseUsuario(nomeLivroRenovar.toUpperCase(), acessarMatricula);
 						break;
 					}			
-				}catch (SenhaUsuarioIncorretaException e1) {
-					System.out.println("Senha ou matrícula incorreta");
 				}catch(NullPointerException e1) {
 					System.out.println("Não existe usuarios no momento.");
 				}	
@@ -146,54 +144,45 @@ public class Main {
 				//por curso===========================================================================
 					case "2":
 						Textos.mostrarCursos();
-						try {
-							System.out.println("Digite o curso do livro desejado");
-							String cursoDoLivro = ler.next();
-							biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
-							Textos.emprestimoLivro();
-							String escolha = ler.next();
-							switch(escolha) {
-								case "1":
-									ler = new Scanner(System.in);
-									System.out.println("Digite sua matricula: ");
-									String matricula = ler.next();
-									System.out.println("Digite sua senha: ");
-									String senha = ler.next();
-									System.out.println("Digite o nome do livro: ");
-									ler = new Scanner(System.in);
-									String livro = ler.nextLine();
-									biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
-									break;
-							}
-						} catch (CursoBuscadoException e1) {
-							System.out.println("Curso não existente");
-						}catch(SenhaUsuarioIncorretaException e1) {
-							System.out.println("Senha ou matrícula incorreta");
+						
+						System.out.println("Digite o curso do livro desejado");
+						String cursoDoLivro = ler.next();
+						biblioteca.buscarCurso(cursoDoLivro.toUpperCase());
+						Textos.emprestimoLivro();
+						String escolha = ler.next();
+						switch(escolha) {
+							case "1":
+								ler = new Scanner(System.in);
+								System.out.println("Digite sua matricula: ");
+								String matricula = ler.next();
+								System.out.println("Digite sua senha: ");
+								String senha = ler.next();
+								System.out.println("Digite o nome do livro: ");
+								ler = new Scanner(System.in);
+								String livro = ler.nextLine();
+								biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
+								break;
 						}
-						break;
+						
+					break;
 				}	
 				break;
 				
 			case "4":
 				
-				// Devolver livro/Fim da reserva----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-				try {			
-					System.out.println("Digite sua matricula: ");
-					String devolverMatricula = ler.next();
+				// Devolver livro/Fim da reserva----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
+				System.out.println("Digite sua matricula: ");
+				String devolverMatricula = ler.next();
 								
-					System.out.println("Digite sua senha: ");
-					String devolverSenha = ler.next();
+				System.out.println("Digite sua senha: ");
+				String devolverSenha = ler.next();
 								
-					System.out.println("Digite o nome do livro: ");
-					ler = new Scanner(System.in);
-					String devolverLivro = ler.nextLine();
+				System.out.println("Digite o nome do livro: ");
+				ler = new Scanner(System.in);
+				String devolverLivro = ler.nextLine();
 								
-					biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro.toUpperCase());
-				}catch(SenhaUsuarioIncorretaException e1) {
-					System.out.println("Senha ou matrícula incorreta");
-				}catch(LivroBuscadoException e1) {
-					System.out.println("Livro não encontrado!");
-				}
+				biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro.toUpperCase());
+				
 				break;
 	
 				

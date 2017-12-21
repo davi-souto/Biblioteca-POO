@@ -32,14 +32,12 @@ public class Biblioteca {
 		
 	}
 	
-	public Usuario acessarUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException {
+	public Usuario acessarUsuario(String matricula, String senha) { 
 		Usuario usuarioAcessado = null;
 		for (int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matricula)) && (usuarios.get(i).getSenha().equals(senha)) ) {
 				usuarios.get(i);
 				usuarioAcessado = usuarios.get(i);
-			}else {
-				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 		return usuarioAcessado;
@@ -140,12 +138,10 @@ public class Biblioteca {
 	}
 	
 	
-	public void buscarCurso(String curso) throws CursoBuscadoException { 
+	public void buscarCurso(String curso) { 
 		for(int i = 0; i < livros.size(); i++) {
 			if(livros.get(i).getCurso().equals(curso)) {
 				System.out.println("Livro: " + livros.get(i).getNomeLivro());	
-			}else {
-				throw new CursoBuscadoException();
 			}
 		}
 	}
@@ -172,7 +168,7 @@ public class Biblioteca {
 	
 	// RESERVAS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	public void cadastrarReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) throws SenhaUsuarioIncorretaException{
+	public void cadastrarReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) { 
 		GregorianCalendar dataEmprestimo = new GregorianCalendar();
 		GregorianCalendar dataDevolucao = new GregorianCalendar();
 		int quantidadeRenovar = 0;
@@ -187,13 +183,11 @@ public class Biblioteca {
 						System.out.println("Concluido!");
 					}
 				}
-			}else {
-				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 	}
 	
-	public void removerReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) throws SenhaUsuarioIncorretaException, LivroBuscadoException {
+	public void removerReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) {
 		for (int i = 0; i < usuarios.size(); i++) {
 			if ((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
 				for (int r = 0; r < reservas.size(); r++) {
@@ -202,12 +196,8 @@ public class Biblioteca {
 						livros.add(l);
 						reservas.remove(r);
 						System.out.println("Concluido");
-					}else {
-						throw new LivroBuscadoException();
 					}
 				}
-			}else {
-				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 	}
@@ -226,7 +216,7 @@ public class Biblioteca {
 		}
 	}
 	
-	public void livrosEmPosseUsuario(String matricula, String senha) throws SenhaUsuarioIncorretaException{
+	public void livrosEmPosseUsuario(String matricula, String senha) { 
 		System.out.println("Livros em posse: " );
 		for (int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matricula)) && (usuarios.get(i).getSenha().equals(senha)) ) {
@@ -236,8 +226,6 @@ public class Biblioteca {
 						System.out.println("Livro: " + reservas.get(o).getLivro().getNomeLivro() + " Curso: " + reservas.get(o).getLivro().getCurso() + " Data da Devolucao: " + reservas.get(o).getDataDevolucao().get(Calendar.DAY_OF_MONTH) + "/" + reservas.get(o).getDataDevolucao().get(Calendar.MONTH));
 					}
 				}
-			}else {
-				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 	}
