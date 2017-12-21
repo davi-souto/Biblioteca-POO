@@ -18,7 +18,6 @@ public class Main {
 	public static void main(String[] args) throws SenhaUsuarioIncorretaException, MatriculaUsuarioException, NomeUsuarioException, CursoBuscadoException, CursoNaoEcontradoException, LivroBuscadoException {
 		Scanner ler = new Scanner(System.in);
 		Biblioteca biblioteca = new Biblioteca();
-	//	ListaLivros listaDeLivros = new ListaLivros();
 		int opcaoUsuario = -1;
 		
 		
@@ -333,4 +332,3 @@ public class Main {
 		}
 	}
 }
-

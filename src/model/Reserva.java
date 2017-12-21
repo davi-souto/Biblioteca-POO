@@ -1,19 +1,20 @@
 package model;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Calendar;
-import java.util.Date;
+
 
 public class Reserva {
 	private Usuario usuario;
 	private Livro livro;
-	private GregorianCalendar data;
+	private GregorianCalendar dataEmprestimo;
+	private GregorianCalendar dataDevolucao;
 
 	
-	public Reserva(Usuario usuario, Livro livro, GregorianCalendar data) {
+	public Reserva(Usuario usuario, Livro livro, GregorianCalendar dataEmprestimo, GregorianCalendar dataDevolucao) {
 		this.usuario = usuario;
 		this.livro = livro;
-		this.data = data;
+		this.dataEmprestimo = dataEmprestimo;
+		this.dataDevolucao = dataDevolucao;
 	}
 	
 	public Reserva() {
@@ -33,12 +34,25 @@ public class Reserva {
 		this.livro = livro;
 	}
 
-	public GregorianCalendar getData() {
-		return data;
+	public GregorianCalendar getDataEmprestimo() {
+		return dataEmprestimo;
 	}
 
-	public void setData(GregorianCalendar data) {
-		this.data = data;
+	public void setDataEmprestimo(GregorianCalendar dataEmprestimo) {
+		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	public GregorianCalendar getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(GregorianCalendar dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
+	}
+	
+	public GregorianCalendar renovarDevolucao() {
+		dataDevolucao.add(Calendar.DAY_OF_MONTH, 7);
+		return dataEmprestimo;
 	}
 
 }
