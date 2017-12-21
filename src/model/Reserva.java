@@ -8,13 +8,15 @@ public class Reserva {
 	private Livro livro;
 	private GregorianCalendar dataEmprestimo;
 	private GregorianCalendar dataDevolucao;
+	private int quantidadeRenovar;
 
 	
-	public Reserva(Usuario usuario, Livro livro, GregorianCalendar dataEmprestimo, GregorianCalendar dataDevolucao) {
+	public Reserva(Usuario usuario, Livro livro, GregorianCalendar dataEmprestimo, GregorianCalendar dataDevolucao, int quantidadeRenovar) {
 		this.usuario = usuario;
 		this.livro = livro;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataDevolucao = dataDevolucao;
+		this.quantidadeRenovar = quantidadeRenovar;
 	}
 	
 	public Reserva() {
@@ -50,9 +52,19 @@ public class Reserva {
 		this.dataDevolucao = dataDevolucao;
 	}
 	
+	
+	public int getQuantidadeRenovar() {
+		return quantidadeRenovar;
+	}
+
+	public void setQuantidadeRenovar(int quantidadeRenovar) {
+		this.quantidadeRenovar = quantidadeRenovar;
+	}
+
 	public GregorianCalendar renovarDevolucao() {
 		dataDevolucao.add(Calendar.DAY_OF_MONTH, 7);
 		return dataEmprestimo;
 	}
+
 
 }

@@ -175,12 +175,13 @@ public class Biblioteca {
 	public void cadastrarReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) throws SenhaUsuarioIncorretaException{
 		GregorianCalendar dataEmprestimo = new GregorianCalendar();
 		GregorianCalendar dataDevolucao = new GregorianCalendar();
+		int quantidadeRenovar = 0;
 		dataDevolucao.add(Calendar.DAY_OF_MONTH, 7);
 		for (int i = 0; i < usuarios.size(); i++) {
 			if((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
 				for (int o = 0; o < livros.size(); o++) {
 					if(livros.get(o).getNomeLivro().equals(nomeLivro)) {
-						Reserva r = new Reserva(usuarios.get(i), livros.get(o), dataEmprestimo, dataDevolucao);
+						Reserva r = new Reserva(usuarios.get(i), livros.get(o), dataEmprestimo, dataDevolucao, quantidadeRenovar);
 						reservas.add(r);
 						livros.remove(o);
 						System.out.println("Concluido!");
@@ -246,12 +247,16 @@ public class Biblioteca {
 		GregorianCalendar dataDevolucao = new GregorianCalendar();
 		for (int i = 0; i < reservas.size(); i++) {
 			if((nomeLivro.equals(reservas.get(i).getLivro().getNomeLivro())) && (matriculaUsuario.equals(reservas.get(i).getUsuario().getMatricula()))) {
-				reservas.get(i).setDataEmprestimo(dataEmprestimo);
-				reservas.get(i).setDataDevolucao(dataDevolucao);
-				reservas.get(i).renovarDevolucao();
-				System.out.println("Operacao Concluida!");
-				System.out.println("Nova data de devolucao: " + reservas.get(i).getDataDevolucao().get(Calendar.DAY_OF_MONTH) + "/" + reservas.get(i).getDataDevolucao().get(Calendar.MONTH));
-			
+				if(reservas.get(i).getQuantidadeRenovar() == 0) {
+					reservas.get(i).setDataEmprestimo(dataEmprestimo);
+					reservas.get(i).setDataDevolucao(dataDevolucao);
+					reservas.get(i).renovarDevolucao();
+					reservas.get(i).setQuantidadeRenovar(1);
+					System.out.println("Operacao Concluida!");
+					System.out.println("Nova data de devolucao: " + reservas.get(i).getDataDevolucao().get(Calendar.DAY_OF_MONTH) + "/" + reservas.get(i).getDataDevolucao().get(Calendar.MONTH));
+				}else {
+					System.out.println("Você não pode renovar um prazo de um mais de uma vez");
+				}
 			}
 		}
 	}
