@@ -4,7 +4,9 @@ import java.util.Scanner;
 import controller.Biblioteca;
 import exceptions.CursoBuscadoException;
 import exceptions.CursoNaoEcontradoException;
+import exceptions.CursoUsuarioNaoIdentificadoException;
 import exceptions.LivroBuscadoException;
+import exceptions.MatriculaNaoIdentificadaException;
 import exceptions.MatriculaUsuarioException;
 import exceptions.NomeUsuarioException;
 import exceptions.SenhaAdminIncorretaException;
@@ -13,7 +15,7 @@ import exceptions.SenhaUsuarioIncorretaException;
 
 public class Main {
 
-	public static void main(String[] args) throws SenhaUsuarioIncorretaException, MatriculaUsuarioException, NomeUsuarioException, CursoBuscadoException, CursoNaoEcontradoException {
+	public static void main(String[] args) throws SenhaUsuarioIncorretaException, MatriculaUsuarioException, NomeUsuarioException, CursoBuscadoException, CursoNaoEcontradoException, LivroBuscadoException {
 		Scanner ler = new Scanner(System.in);
 		Biblioteca biblioteca = new Biblioteca();
 	//	ListaLivros listaDeLivros = new ListaLivros();
@@ -64,9 +66,9 @@ public class Main {
 						biblioteca.renovarLivroEmPosseUsuario(nomeLivroRenovar.toUpperCase(), acessarMatricula);
 						break;
 					}			
-				}catch (SenhaUsuarioIncorretaException e3) {
+				}catch (SenhaUsuarioIncorretaException e1) {
 					System.out.println("Senha ou matrícula incorreta");
-				}catch(NullPointerException e7) {
+				}catch(NullPointerException e1) {
 					System.out.println("Não existe usuarios no momento.");
 				}	
 				break;
@@ -108,11 +110,11 @@ public class Main {
 							System.out.println("Usuario cadastrado");
 							break;
 					}
-				}catch(MatriculaUsuarioException e4) {
+				}catch(MatriculaUsuarioException e1) {
 					System.out.println("A matrícula deve conter 14 dígitos!");
-				}catch (NumberFormatException e6){
+				}catch (NumberFormatException e1){
 					System.out.println("Sua matrícula deve conter apenas números!");
-				}catch(NomeUsuarioException e5) {
+				}catch(NomeUsuarioException e1) {
 					System.out.println("Seu nome completo deve conter ao menos dois nomes");
 				}
 				break;
@@ -138,7 +140,7 @@ public class Main {
 							String livro = ler.nextLine();
 							biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 							System.out.println("Concluido!");
-						} catch (LivroBuscadoException e2) {
+						} catch (LivroBuscadoException e1) {
 							System.out.println("Livro não encontrado!");
 						}
 						break;
@@ -164,9 +166,9 @@ public class Main {
 									biblioteca.cadastrarReserva(matricula, senha, livro.toUpperCase());
 									break;
 							}
-						} catch (CursoBuscadoException e2) {
+						} catch (CursoBuscadoException e1) {
 							System.out.println("Curso não existente");
-						}catch(SenhaUsuarioIncorretaException e3) {
+						}catch(SenhaUsuarioIncorretaException e1) {
 							System.out.println("Senha ou matrícula incorreta");
 						}
 						break;
@@ -176,18 +178,23 @@ public class Main {
 			case "4":
 				
 				// Devolver livro/Fim da reserva----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-							
-				System.out.println("Digite sua matricula: ");
-				String devolverMatricula = ler.next();
-							
-				System.out.println("Digite sua senha: ");
-				String devolverSenha = ler.next();
-							
-				System.out.println("Digite o nome do livro: ");
-				ler = new Scanner(System.in);
-				String devolverLivro = ler.nextLine();
-							
-				biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro.toUpperCase());
+				try {			
+					System.out.println("Digite sua matricula: ");
+					String devolverMatricula = ler.next();
+								
+					System.out.println("Digite sua senha: ");
+					String devolverSenha = ler.next();
+								
+					System.out.println("Digite o nome do livro: ");
+					ler = new Scanner(System.in);
+					String devolverLivro = ler.nextLine();
+								
+					biblioteca.removerReserva(devolverMatricula, devolverSenha, devolverLivro.toUpperCase());
+				}catch(SenhaUsuarioIncorretaException e1) {
+					System.out.println("Senha ou matrícula incorreta");
+				}catch(LivroBuscadoException e1) {
+					System.out.println("Livro não encontrado!");
+				}
 				break;
 	
 				
@@ -210,30 +217,40 @@ public class Main {
 								switch(menuBuscaUsuario) {
 									case 1: 
 										//buscar pelo nome ou matricula++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-													
+										try {			
 										System.out.println("Digite a matricula do usuario:");
-										String matriculaBuscarUsuario = ler.next();
+										ler = new Scanner(System.in);
+										String matriculaBuscarUsuario = ler.nextLine();
 												
 										System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getMatricula());
 										System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getNome());
 										System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario.toUpperCase()).getCursoUsuario());
+										}catch(MatriculaNaoIdentificadaException e1) {
+											System.out.println("Matrícula não identificada");
+										}
 										break;	
 									
 									case 2:
 										// buscar pelo curso++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-													
+										try {		
 										System.out.println("Digite o curso do usuario:");
 										String cursoBuscarUsuario = ler.next();
 													
 										System.out.println("Usuarios do curso:");
 										biblioteca.mostrarUsuariosDoCurso(cursoBuscarUsuario.toUpperCase());
 													
-										System.out.println("Digite o nome ou matrícula do usuário:");
-										String matriculaBuscarUsuario2 = ler.next();
+										System.out.println("Digite a matrícula do usuário:");
+										ler = new Scanner(System.in);
+										String matriculaBuscarUsuario2 = ler.nextLine();
 													
 										System.out.println("Matricula: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getMatricula());
 										System.out.println("Usuario: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getNome());
 										System.out.println("Curso: " + biblioteca.buscarUsuarioExistenteMatricula(matriculaBuscarUsuario2.toUpperCase()).getCursoUsuario());
+										}catch(MatriculaNaoIdentificadaException e1) {
+											System.out.println("Matrícula não identificada");
+										}catch(CursoUsuarioNaoIdentificadoException e1) {
+											System.out.println("Curso não identificado");
+										}
 										break;
 									
 								}
@@ -272,7 +289,7 @@ public class Main {
 									}else {
 										throw new CursoNaoEcontradoException();
 									}
-								}catch(CursoNaoEcontradoException e9) {
+								}catch(CursoNaoEcontradoException e1) {
 									System.out.println("Curso não compatível com os já pré-estabelecidos");
 								}
 								break;
@@ -293,8 +310,8 @@ public class Main {
 										System.out.println("Usuario não foi removido.");
 									}
 										
-								} catch (SenhaAdminIncorretaException e) {
-									System.out.println(e.getMessage());
+								} catch (SenhaAdminIncorretaException e1) {
+									System.out.println(e1.getMessage());
 								}
 								break;
 								

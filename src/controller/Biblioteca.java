@@ -4,7 +4,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import exceptions.CursoBuscadoException;
+import exceptions.CursoUsuarioNaoIdentificadoException;
 import exceptions.LivroBuscadoException;
+import exceptions.MatriculaNaoIdentificadaException;
 import exceptions.SenhaAdminIncorretaException;
 import exceptions.SenhaUsuarioIncorretaException;
 
@@ -80,22 +82,26 @@ public class Biblioteca {
 		}
 	}
 	
-	public Usuario buscarUsuarioExistenteMatricula(String matricula) {
+	public Usuario buscarUsuarioExistenteMatricula(String matriculaOuNome) throws MatriculaNaoIdentificadaException {
 		Usuario usuarioBuscadoMatricula = null;
 		for (int i =0; i < usuarios.size(); i++) {
-			if(usuarios.get(i).getMatricula().equals(matricula)) {
+			if((usuarios.get(i).getMatricula().equals(matriculaOuNome)) ) {
 				usuarios.get(i);
 				usuarioBuscadoMatricula = usuarios.get(i);
 				
+			}else {
+				throw new MatriculaNaoIdentificadaException();
 			}
 		}
 		return usuarioBuscadoMatricula;
 	}
 	
-	public void mostrarUsuariosDoCurso(String curso) {
+	public void mostrarUsuariosDoCurso(String curso) throws CursoUsuarioNaoIdentificadoException{
 		for (int i = 0; i < usuarios.size(); i++) {
 			if(usuarios.get(i).getCursoUsuario().equals(curso)) {
 				System.out.println(usuarios.get(i).getNome() + ":" + usuarios.get(i).getMatricula());
+			}else {
+				throw new CursoUsuarioNaoIdentificadoException();
 			}
 		}
 	}
@@ -184,7 +190,7 @@ public class Biblioteca {
 		}
 	}
 	
-	public void removerReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) {
+	public void removerReserva(String matriculaUsuario, String senhaUsuario, String nomeLivro) throws SenhaUsuarioIncorretaException, LivroBuscadoException {
 		for (int i = 0; i < usuarios.size(); i++) {
 			if ((usuarios.get(i).getMatricula().equals(matriculaUsuario)) && (usuarios.get(i).getSenha().equals(senhaUsuario))) {
 				for (int r = 0; r < reservas.size(); r++) {
@@ -193,8 +199,12 @@ public class Biblioteca {
 						livros.add(l);
 						reservas.remove(r);
 						System.out.println("Concluído");
+					}else {
+						throw new LivroBuscadoException();
 					}
 				}
+			}else {
+				throw new SenhaUsuarioIncorretaException();
 			}
 		}
 	}

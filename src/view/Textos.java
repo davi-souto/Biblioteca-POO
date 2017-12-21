@@ -40,7 +40,7 @@ public class Textos {
 	
 	public static void buscaDeUsuario() {
 		System.out.println("-------------------------------------");
-		System.out.println("1 - Buscar por matricula ou nome");
+		System.out.println("1 - Buscar por matricula ");
 		System.out.println("2 - Buscar por curso");
 		System.out.println("-------------------------------------");
 	}
