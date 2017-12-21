@@ -16,6 +16,19 @@ public class Textos {
 		System.out.println("3 - Buscar livro");
 		System.out.println("4 - Devolver Livro");
 		System.out.println("-------------------------------------");
+		System.out.println("");
+		System.out.println("••••••••••••••••••••••••••••••");
+		System.out.println("• 5 - Acesso à administração •");
+		System.out.println("••••••••••••••••••••••••••••••");
+
+	}
+	
+	public static void menuOpcoesAluno() {
+		System.out.println("-------------------------------------");
+		System.out.println("1 - Trocar senha");
+		System.out.println("2 - Renovar empréstimo");
+		System.out.println("0 - Sair");
+		System.out.println("-------------------------------------");
 	}
 	
 	public static void buscadeLivros() {
@@ -27,9 +40,8 @@ public class Textos {
 	
 	public static void buscaDeUsuario() {
 		System.out.println("-------------------------------------");
-		System.out.println("1 - Buscar por matricula");
-		System.out.println("2 - Buscar por nome");
-		System.out.println("3 - Buscar por curso");
+		System.out.println("1 - Buscar por matricula ");
+		System.out.println("2 - Buscar por curso");
 		System.out.println("-------------------------------------");
 	}
 	
@@ -39,6 +51,8 @@ public class Textos {
 		System.out.println("2 - Quantidade de usuarios");
 		System.out.println("3 - Cadastrar livro");
 		System.out.println("4 - Remover usuário");
+		System.out.println("5 - Mostrar reservas existentes");
+		System.out.println("0 - Sair");
 		System.out.println("-------------------------------------");
 	}
 	
@@ -60,6 +74,15 @@ public class Textos {
 	public static void menuAcessarConta(){
 		System.out.println("-------------------------------------");
 		System.out.println("");
+		System.out.println("-------------------------------------");
+	}
+	
+	public static void mostrarCursos() {
+		System.out.println("-------------------------------------");
+		System.out.println("1 - TADS");
+		System.out.println("2 - Matematica");
+		System.out.println("3 - Engenharia");
+		System.out.println("4 - Linguagens");
 		System.out.println("-------------------------------------");
 	}
 }
